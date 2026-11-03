@@ -228,6 +228,9 @@ class PoProductProfitXlsx(models.AbstractModel):
               ...
         Every row count is known up front from the summary, so the product
         row can carry its SUBTOTAL range before the detail is streamed."""
+        # translated here: ``_`` finds the language through the caller's
+        # ``self``, which the close_vendor closure below does not have
+        subtotal_label = _('Subtotal · %s')
         sales_keys = ('sold_qty', 'sales_amount')
         purchase_keys = ('qty', 'amount', 'po_count', 'received', 'pending')
         current_product = current_vendor = None
@@ -238,7 +241,7 @@ class PoProductProfitXlsx(models.AbstractModel):
             w.sheet.set_row(at_row, None, None, {'level': 1})
             for key in purchase_keys:
                 w.subtotal(at_row, key, vendor_start, at_row - 1, vendor_acc[key], 'vendor')
-            w.text(at_row, 'vendor', _('Subtotal · %s', vendor_acc['name']), 'vendor')
+            w.text(at_row, 'vendor', subtotal_label % vendor_acc['name'], 'vendor')
             w.ratio(at_row, 'avg_cost', 'amount', 'qty',
                     vendor_acc['amount'] / vendor_acc['qty'] if vendor_acc['qty'] else 0,
                     'vendor')
