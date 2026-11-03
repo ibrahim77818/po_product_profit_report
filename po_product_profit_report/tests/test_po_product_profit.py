@@ -33,12 +33,12 @@ class TestPoProductProfit(TransactionCase):
         cls.customer = Partner.create({'name': 'PPR Customer'})
 
         Product = cls.env['product.product']
-        cls.p1 = Product.create({'name': 'PPR Widget', 'detailed_type': 'product',
+        cls.p1 = Product.create({'name': 'PPR Widget', 'type': 'consu', 'is_storable': True,
                                  'default_code': 'PPR-W', 'barcode': '6290000000011',
                                  'standard_price': 999.0, 'list_price': 5.0})
-        cls.p2 = Product.create({'name': 'PPR Gadget', 'detailed_type': 'product',
+        cls.p2 = Product.create({'name': 'PPR Gadget', 'type': 'consu', 'is_storable': True,
                                  'default_code': 'PPR-G', 'barcode': '6290000000028'})
-        cls.p3 = Product.create({'name': 'PPR Bolt', 'detailed_type': 'product',
+        cls.p3 = Product.create({'name': 'PPR Bolt', 'type': 'consu', 'is_storable': True,
                                  'default_code': 'PPR-B'})
         cls.products = cls.p1 | cls.p2 | cls.p3
 
@@ -71,7 +71,7 @@ class TestPoProductProfit(TransactionCase):
             'order_line': [
                 (0, 0, {'product_id': cls.p1.id, 'product_uom_qty': 12, 'price_unit': 5.0}),
                 (0, 0, {'product_id': cls.p3.id, 'product_uom_qty': 1,
-                        'product_uom': cls.uom_dozen.id, 'price_unit': 48.0}),
+                        'product_uom_id': cls.uom_dozen.id, 'price_unit': 48.0}),
             ],
         })
         cls.so.action_confirm()
@@ -93,7 +93,7 @@ class TestPoProductProfit(TransactionCase):
                 'product_id': product.id,
                 'product_qty': qty,
                 'price_unit': price,
-                'product_uom': (uom or product.uom_po_id).id,
+                'product_uom_id': (uom or product.uom_id).id,
                 'date_planned': date_order,
             }) for product, qty, price, *uom_ in lines for uom in [uom_[0] if uom_ else None]],
         }
@@ -108,7 +108,8 @@ class TestPoProductProfit(TransactionCase):
         picking = po.picking_ids.filtered(lambda p: p.state not in ('done', 'cancel'))
         picking.ensure_one()
         for move in picking.move_ids:
-            move.quantity_done = qty
+            move.quantity = qty
+            move.picked = True
         result = picking.button_validate()
         if isinstance(result, dict) and result.get('res_model') == 'stock.backorder.confirmation':
             Form(cls.env['stock.backorder.confirmation'].with_context(result['context'])) \
@@ -330,3 +331,16 @@ class TestPoProductProfit(TransactionCase):
         totals = self.engine.fetch_summary(self._options())['totals']
         self.assertEqual(totals['detail_count'],
                          sum(1 for _ in self.engine.iter_detail_rows(self._options())))
+
+    def test_17_purchase_down_payment_ignored(self):
+        """Odoo 19 purchase down payments (no product, qty 0) never count as a purchase."""
+        before = self.engine.fetch_summary(self._options(product_ids=[]))['totals']
+        po = self._po(self.vendor_a, [(self.p1, 1, 1.0)], '2025-03-19 09:00:00')
+        po.button_confirm()
+        self.env['purchase.order.line'].create({
+            'order_id': po.id, 'name': 'Down payment', 'is_downpayment': True,
+            'product_qty': 0.0, 'price_unit': 500.0,
+        })
+        after = self.engine.fetch_summary(self._options(product_ids=[]))['totals']
+        self.assertAlmostEqual(after['amount'] - before['amount'], 1.0, msg='only the real line counts')
+        self.assertEqual(after['po_count'] - before['po_count'], 1)

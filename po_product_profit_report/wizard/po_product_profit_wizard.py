@@ -164,7 +164,7 @@ class PoProductProfitWizard(models.TransientModel):
 
     def action_export_xlsx(self):
         options = self._get_options()
-        self.env['po.product.profit.engine']._check_access()
+        self.env['po.product.profit.engine']._ppr_check_access()
         return {
             'type': 'ir.actions.client',
             'tag': 'po_product_profit_report.download_xlsx',
@@ -215,7 +215,7 @@ class PoProductProfitWizard(models.TransientModel):
         company, currency = engine._report_currency(options)
         data.update({
             'options': options,
-            'qty_digits': self.env['decimal.precision'].precision_get('Product Unit of Measure'),
+            'qty_digits': self.env['decimal.precision'].precision_get('Product Unit'),
             'amount_digits': currency.decimal_places,
             'filters': engine.filter_labels(options),
             'currency_id': currency.id,

@@ -25,7 +25,7 @@ class PoProductProfitFormatter(models.AbstractModel):
     @api.model
     def get_formatters(self, currency):
         env = self.env
-        qty_digits = env['decimal.precision'].precision_get('Product Unit of Measure')
+        qty_digits = env['decimal.precision'].precision_get('Product Unit')
         amount_digits = currency.decimal_places
 
         def fmt_qty(value):

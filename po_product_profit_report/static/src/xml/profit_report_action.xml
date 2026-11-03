@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="po_product_profit_report.ProfitReport" owl="1">
+    <t t-name="po_product_profit_report.ProfitReport">
         <div class="o_action o_ppr h-100 d-flex flex-column">
             <!-- Control panel -->
             <div class="o_ppr_toolbar d-flex flex-wrap align-items-center gap-2 px-3 py-2 border-bottom bg-view">
@@ -38,35 +38,35 @@
             <div class="o_ppr_body flex-grow-1 overflow-auto px-3 pb-3">
                 <!-- Filter chips -->
                 <div class="o_ppr_filters d-flex flex-wrap gap-2 my-2 small">
-                    <span class="badge rounded-pill text-bg-light border"><b>Period</b>: <span dir="auto" t-esc="state.filters.period"/></span>
-                    <span class="badge rounded-pill text-bg-light border"><b>Documents</b>: <span dir="auto" t-esc="state.filters.doc_type"/></span>
-                    <span class="badge rounded-pill text-bg-light border"><b>Vendors</b>: <span dir="auto" t-esc="state.filters.vendors"/></span>
-                    <span class="badge rounded-pill text-bg-light border"><b>Products</b>: <span dir="auto" t-esc="state.filters.products"/></span>
-                    <span class="badge rounded-pill text-bg-light border"><b>Warehouses</b>: <span dir="auto" t-esc="state.filters.warehouses"/></span>
-                    <span class="badge rounded-pill text-bg-light border"><b>Companies</b>: <span dir="auto" t-esc="state.filters.companies"/></span>
-                    <span class="badge rounded-pill text-bg-light border"><b>Sold Qty</b>: <span dir="auto" t-esc="state.filters.sale_basis"/></span>
-                    <span class="badge rounded-pill text-bg-light border"><b>Currency</b>: <span dir="auto" t-esc="state.filters.currency"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Period</b>: <span dir="auto" t-out="state.filters.period"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Documents</b>: <span dir="auto" t-out="state.filters.doc_type"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Vendors</b>: <span dir="auto" t-out="state.filters.vendors"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Products</b>: <span dir="auto" t-out="state.filters.products"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Warehouses</b>: <span dir="auto" t-out="state.filters.warehouses"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Companies</b>: <span dir="auto" t-out="state.filters.companies"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Sold Qty</b>: <span dir="auto" t-out="state.filters.sale_basis"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Currency</b>: <span dir="auto" t-out="state.filters.currency"/></span>
                 </div>
 
                 <!-- KPIs -->
                 <div class="o_ppr_kpis d-flex flex-wrap gap-2 mb-3">
                     <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Purchased Amount</div>
-                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.amount, 'amount')"/></div>
+                        <div class="o_ppr_kpi_value" t-out="fmt(state.totals.amount, 'amount')"/></div>
                     <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Sales Amount</div>
-                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.sales_amount, 'amount')"/></div>
+                        <div class="o_ppr_kpi_value" t-out="fmt(state.totals.sales_amount, 'amount')"/></div>
                     <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Gross Profit</div>
                         <div t-attf-class="o_ppr_kpi_value #{isNegative(state.totals.gross_profit) ? 'text-danger' : 'text-success'}"
-                             t-esc="fmt(state.totals.gross_profit, 'amount')"/></div>
+                             t-out="fmt(state.totals.gross_profit, 'amount')"/></div>
                     <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Margin</div>
-                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.margin, 'pct')"/></div>
+                        <div class="o_ppr_kpi_value" t-out="fmt(state.totals.margin, 'pct')"/></div>
                     <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Pending Qty</div>
-                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.pending, 'qty')"/></div>
+                        <div class="o_ppr_kpi_value" t-out="fmt(state.totals.pending, 'qty')"/></div>
                     <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Purchase Orders</div>
-                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.po_count, 'int')"/></div>
+                        <div class="o_ppr_kpi_value" t-out="fmt(state.totals.po_count, 'int')"/></div>
                     <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Products</div>
-                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.count, 'int')"/></div>
+                        <div class="o_ppr_kpi_value" t-out="fmt(state.totals.count, 'int')"/></div>
                     <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Vendors</div>
-                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.vendor_count, 'int')"/></div>
+                        <div class="o_ppr_kpi_value" t-out="fmt(state.totals.vendor_count, 'int')"/></div>
                 </div>
 
                 <div t-if="state.loading" class="text-center text-muted py-5">
@@ -93,7 +93,7 @@
                             <th t-foreach="columns" t-as="c" t-key="c.key"
                                 t-attf-class="text-end #{c.sort ? 'o_ppr_sortable' : ''}"
                                 t-on-click="() => this.sortBy(c)">
-                                <t t-esc="c.label"/> <i t-att-class="sortIcon(c.sort)"/>
+                                <t t-out="c.label"/> <i t-att-class="sortIcon(c.sort)"/>
                             </th>
                         </tr>
                     </thead>
@@ -105,19 +105,19 @@
                                     <i t-if="isDetailed" t-attf-class="fa fa-fw #{state.detailLoading[row.product_id] ? 'fa-circle-o-notch fa-spin' : (state.expanded[row.product_id] ? 'fa-caret-down' : 'fa-caret-right')}"/>
                                     <a href="#" class="o_ppr_link"
                                        t-on-click.stop.prevent="() => this.openRecord('product.product', row.product_id)"
-                                       dir="auto" t-esc="row.product_label"/>
+                                       dir="auto" t-out="row.product_label"/>
                                 </td>
                                 <td class="o_ppr_col_date text-muted">
                                     <t t-if="!isDetailed">
-                                        <span t-if="!row.multi_vendor" dir="auto" t-esc="row.first_vendor_name"/>
+                                        <span t-if="!row.multi_vendor" dir="auto" t-out="row.first_vendor_name"/>
                                         <t t-else="">Multiple vendors</t>
                                     </t>
                                     <t t-elif="row.multi_vendor">Multiple vendors</t>
                                 </td>
-                                <td class="text-muted" t-esc="row.barcode or ''"/>
+                                <td class="text-muted" t-out="row.barcode or ''"/>
                                 <td t-foreach="columns" t-as="c" t-key="c.key"
                                     t-attf-class="text-end #{(c.key === 'gross_profit' or c.key === 'margin') and isNegative(row[c.key]) ? 'text-danger' : ''}"
-                                    t-esc="fmt(row[c.key], c.kind)"/>
+                                    t-out="fmt(row[c.key], c.kind)"/>
                             </tr>
                             <t t-if="isDetailed and state.expanded[row.product_id] and state.details[row.product_id]">
                                 <t t-foreach="state.details[row.product_id]" t-as="v" t-key="v.vendor_id">
@@ -125,33 +125,33 @@
                                         <td class="o_ppr_col_item ps-4">
                                             <a href="#" class="o_ppr_link"
                                                t-on-click.prevent="() => this.openRecord('res.partner', v.vendor_id)"
-                                               dir="auto" t-esc="v.vendor_name"/>
+                                               dir="auto" t-out="v.vendor_name"/>
                                         </td>
                                         <td/>
                                         <td/>
-                                        <td class="text-end" t-esc="fmt(v.qty, 'qty')"/>
-                                        <td class="text-end" t-esc="fmt(v.amount, 'amount')"/>
-                                        <td class="text-end" t-esc="fmt(v.avg_cost, 'amount')"/>
-                                        <td class="text-end" t-esc="fmt(v.po_count, 'int')"/>
-                                        <td class="text-end" t-esc="fmt(v.received, 'qty')"/>
-                                        <td class="text-end" t-esc="fmt(v.pending, 'qty')"/>
+                                        <td class="text-end" t-out="fmt(v.qty, 'qty')"/>
+                                        <td class="text-end" t-out="fmt(v.amount, 'amount')"/>
+                                        <td class="text-end" t-out="fmt(v.avg_cost, 'amount')"/>
+                                        <td class="text-end" t-out="fmt(v.po_count, 'int')"/>
+                                        <td class="text-end" t-out="fmt(v.received, 'qty')"/>
+                                        <td class="text-end" t-out="fmt(v.pending, 'qty')"/>
                                         <td colspan="5"/>
                                     </tr>
                                     <tr t-foreach="v.lines" t-as="l" t-key="l.order_id" class="o_ppr_line">
                                         <td class="o_ppr_col_item o_ppr_indent2">
                                             <a href="#" class="o_ppr_link"
                                                t-on-click.prevent="() => this.openRecord('purchase.order', l.order_id)"
-                                               dir="auto" t-esc="l.po_name"/>
+                                               dir="auto" t-out="l.po_name"/>
                                             <span t-if="l.is_rfq" class="badge text-bg-warning ms-1">RFQ</span>
                                         </td>
-                                        <td class="o_ppr_col_date" t-esc="fmtDate(l.po_date)"/>
+                                        <td class="o_ppr_col_date" t-out="fmtDate(l.po_date)"/>
                                         <td/>
-                                        <td class="text-end" t-esc="fmt(l.qty, 'qty')"/>
-                                        <td class="text-end" t-esc="fmt(l.amount, 'amount')"/>
-                                        <td class="text-end" t-esc="fmt(l.avg_cost, 'amount')"/>
+                                        <td class="text-end" t-out="fmt(l.qty, 'qty')"/>
+                                        <td class="text-end" t-out="fmt(l.amount, 'amount')"/>
+                                        <td class="text-end" t-out="fmt(l.avg_cost, 'amount')"/>
                                         <td class="text-end">1</td>
-                                        <td class="text-end" t-esc="fmt(l.received, 'qty')"/>
-                                        <td t-attf-class="text-end #{l.pending ? 'text-warning fw-bold' : ''}" t-esc="fmt(l.pending, 'qty')"/>
+                                        <td class="text-end" t-out="fmt(l.received, 'qty')"/>
+                                        <td t-attf-class="text-end #{l.pending ? 'text-warning fw-bold' : ''}" t-out="fmt(l.pending, 'qty')"/>
                                         <td colspan="5"/>
                                     </tr>
                                 </t>
@@ -163,23 +163,23 @@
                             <td class="o_ppr_col_item">
                                 Grand Total
                                 <span class="text-muted fw-normal small ms-1">
-                                    (<t t-esc="state.rows.length"/> / <t t-esc="state.totals.count"/> products shown)
+                                    (<t t-out="state.rows.length"/> / <t t-out="state.totals.count"/> products shown)
                                 </span>
                             </td>
                             <td/>
                             <td/>
-                            <td class="text-end" t-esc="fmt(state.totals.qty, 'qty')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.amount, 'amount')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.avg_cost, 'amount')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.po_count, 'int')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.received, 'qty')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.pending, 'qty')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.sold_qty, 'qty')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.sale_rate, 'amount')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.sales_amount, 'amount')"/>
+                            <td class="text-end" t-out="fmt(state.totals.qty, 'qty')"/>
+                            <td class="text-end" t-out="fmt(state.totals.amount, 'amount')"/>
+                            <td class="text-end" t-out="fmt(state.totals.avg_cost, 'amount')"/>
+                            <td class="text-end" t-out="fmt(state.totals.po_count, 'int')"/>
+                            <td class="text-end" t-out="fmt(state.totals.received, 'qty')"/>
+                            <td class="text-end" t-out="fmt(state.totals.pending, 'qty')"/>
+                            <td class="text-end" t-out="fmt(state.totals.sold_qty, 'qty')"/>
+                            <td class="text-end" t-out="fmt(state.totals.sale_rate, 'amount')"/>
+                            <td class="text-end" t-out="fmt(state.totals.sales_amount, 'amount')"/>
                             <td t-attf-class="text-end #{isNegative(state.totals.gross_profit) ? 'text-danger' : ''}"
-                                t-esc="fmt(state.totals.gross_profit, 'amount')"/>
-                            <td class="text-end" t-esc="fmt(state.totals.margin, 'pct')"/>
+                                t-out="fmt(state.totals.gross_profit, 'amount')"/>
+                            <td class="text-end" t-out="fmt(state.totals.margin, 'pct')"/>
                         </tr>
                     </tfoot>
                 </table>

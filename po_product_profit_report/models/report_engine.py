@@ -50,7 +50,7 @@ REPORT_INDEXES = [
     ('po_ppr_sale_order_date_idx', 'sale_order',
      '(date_order) INCLUDE (state, company_id, warehouse_id, currency_rate)'),
     ('po_ppr_sale_line_order_cover_idx', 'sale_order_line',
-     '(order_id, product_id) INCLUDE (product_uom_qty, qty_delivered, qty_invoiced, product_uom, price_subtotal) '
+     '(order_id, product_id) INCLUDE (product_uom_qty, qty_delivered, qty_invoiced, product_uom_id, price_subtotal) '
      'WHERE display_type IS NULL AND product_id IS NOT NULL'),
 ]
 
@@ -105,7 +105,7 @@ class PoProductProfitEngine(models.AbstractModel):
     # Options
     # ------------------------------------------------------------------ #
     @api.model
-    def _check_access(self):
+    def _ppr_check_access(self):
         if not (self.env.su or self.env.user.has_group('purchase.group_purchase_manager')):
             raise AccessError(_('Only Purchase Administrators can run the PO Product Profit Report.'))
 
@@ -311,14 +311,15 @@ SELECT d.product_id, SUM(d.cnt - 1)::int
         qty_expr, amount_expr = SALE_BASIS[options['sale_basis']]
         return f"""
 SELECT sl.product_id,
-       SUM({qty_expr}::float8 / lu.factor * pu.factor) AS qty,
+       -- Odoo 19: uom factor = absolute quantity in reference units, so qty x from / to
+       SUM({qty_expr}::float8 * lu.factor / pu.factor) AS qty,
        SUM(COALESCE(({amount_expr})::float8, 0)
            * cf.factor::float8 / COALESCE(NULLIF(so.currency_rate, 0), 1)::float8) AS amount
   FROM sale_order so
   JOIN unnest(%(cf_ids)s::int[], %(cf_factors)s::numeric[]) AS cf(company_id, factor)
     ON cf.company_id = so.company_id
   JOIN sale_order_line sl ON sl.order_id = so.id
-  JOIN uom_uom lu ON lu.id = sl.product_uom
+  JOIN uom_uom lu ON lu.id = sl.product_uom_id
   JOIN product_product spp ON spp.id = sl.product_id
   JOIN product_template spt_ ON spt_.id = spp.product_tmpl_id
   JOIN uom_uom pu ON pu.id = spt_.uom_id
@@ -459,7 +460,7 @@ SELECT COUNT(*) AS po_count, COUNT(DISTINCT rp.commercial_partner_id) AS vendor_
     @api.model
     def fetch_summary(self, options, offset=0, limit=None):
         """Product rows (one page) + grand totals over the whole selection."""
-        self._check_access()
+        self._ppr_check_access()
         self.env.flush_all()
         self._tune_session()
         params = self._get_params(options)
@@ -484,7 +485,7 @@ SELECT COUNT(*) AS po_count, COUNT(DISTINCT rp.commercial_partner_id) AS vendor_
 
         Restricting ``product_ids`` at the line level keeps this an index
         lookup however large the period is."""
-        self._check_access()
+        self._ppr_check_access()
         self.env.flush_all()
         wanted = [int(p) for p in product_ids or []]
         if not wanted:
@@ -521,7 +522,7 @@ SELECT l.product_id, l.vendor_id, rp.name AS vendor_name,
         attached. Uses a server-side cursor so a million rows never sit in
         Python memory at once. ``product_rows`` (sorted, from
         ``fetch_summary``) can be passed to avoid recomputing them."""
-        self._check_access()
+        self._ppr_check_access()
         self.env.flush_all()
         self._tune_session()
         params = self._get_params(options)
