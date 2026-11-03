@@ -1,0 +1,133 @@
+// PDF styles. Written with physical left/right: Odoo runs the report bundle
+// through rtlcss for right-to-left languages (Arabic), which mirrors them.
+// wkhtmltopdf's WebKit predates logical properties, so avoid start/end here.
+
+.ppr-header {
+    height: 20mm;            // fixed: must stay below header_spacing (28mm)
+    overflow: hidden;
+    font-family: "DejaVu Sans", Lato, Arial, sans-serif;
+    .ppr-header-table {
+        width: 100%;
+        border-bottom: 2px solid #1F3864;
+        td { vertical-align: middle; padding: 0 0 4px 0; }
+    }
+    .ppr-header-logo { width: 22%; img { max-height: 15mm; max-width: 55mm; } }
+    .ppr-header-title { width: 50%; text-align: center; }
+    .ppr-title { font-size: 15pt; font-weight: bold; color: #1F3864; }
+    .ppr-subtitle { font-size: 8.5pt; color: #595959; margin-top: 2px; }
+    .ppr-header-meta {
+        width: 28%;
+        text-align: right;
+        font-size: 7.5pt;
+        color: #404040;
+        line-height: 1.5;
+        padding-right: 1mm;
+        white-space: nowrap;
+    }
+}
+
+.ppr-footer {
+    font-family: "DejaVu Sans", Lato, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #7F7F7F;
+    .ppr-footer-table { width: 100%; border-top: 1px solid #BFBFBF; }
+    .ppr-footer-table td { padding-top: 3px; }
+    .ppr-footer-right { text-align: right; }
+}
+
+.ppr-report {
+    font-family: "DejaVu Sans", Lato, Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #222;
+
+    .ppr-filters {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 3mm;
+        th, td { border: 1px solid #D9D9D9; padding: 2px 5px; vertical-align: top; text-align: left; }
+        th { background: #F2F2F2; color: #404040; width: 9%; white-space: nowrap; font-weight: bold; }
+        td { width: 24%; }
+    }
+
+    .ppr-kpis {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 2mm 0;
+        margin: 0 -2mm 3mm -2mm;
+        td {
+            border: 1px solid #C9D4E5;
+            border-radius: 2px;
+            background: #F5F8FC;
+            padding: 3px 6px;
+            text-align: center;
+        }
+        .ppr-kpi-label { font-size: 6.5pt; color: #595959; text-transform: uppercase; }
+        .ppr-kpi-value { font-size: 10.5pt; font-weight: bold; color: #1F3864; }
+    }
+
+    .ppr-table {
+        width: 100%;
+        border-collapse: collapse;
+        // Repeat the column headers on every page; never split a row.
+        thead { display: table-header-group; }
+        tfoot { display: table-row-group; }
+        tr { page-break-inside: avoid; }
+        th {
+            background: #1F3864;
+            color: #FFF;
+            font-weight: bold;
+            font-size: 7pt;
+            padding: 3px 3px;
+            border: 1px solid #1F3864;
+            text-align: left;
+            vertical-align: bottom;
+        }
+        td { padding: 2px 3px; border-bottom: 1px solid #E7E6E6; vertical-align: top; }
+        .ppr-num { text-align: right; white-space: nowrap; }
+        .ppr-nowrap { white-space: nowrap; }
+        .ppr-col-vendor { width: 13%; }
+        .ppr-col-po { width: 8%; }
+        .ppr-col-date { width: 6.5%; }
+        .ppr-col-item { width: 15%; }
+        .ppr-col-barcode { width: 7%; }
+        .ppr-col-small { width: 4%; }
+        .ppr-row-product td {
+            background: #DDEBF7;
+            font-weight: bold;
+            border-top: 1px solid #9BC2E6;
+        }
+        .ppr-row-vendor td { background: #F7F9FC; font-style: italic; color: #404040; }
+        .ppr-row-line td { color: #333; }
+        .ppr-row-total td {
+            background: #FCE4D6;
+            font-weight: bold;
+            border-top: 2px solid #C65911;
+            border-bottom: 2px solid #C65911;
+        }
+        .ppr-item-label { white-space: normal; }
+    }
+    .ppr-muted { color: #7F7F7F; font-weight: normal; }
+    .ppr-neg { color: #C00000; }
+    .ppr-badge {
+        font-size: 6pt;
+        background: #FFE699;
+        color: #7F6000;
+        padding: 0 3px;
+        border-radius: 2px;
+    }
+    .ppr-note { margin-top: 3mm; font-size: 6.5pt; color: #7F7F7F; }
+}
+
+// Bidirectional text. In Arabic pages, numbers ("-20,014.06", "37.8%"),
+// references ("[BENCH-1207] ...") and dates must keep their own left-to-right
+// order or the minus sign / brackets jump to the wrong side. rtlcss would
+// flip `direction`, hence the rtl:ignore directives.
+.ppr-report .ppr-num,
+.ppr-report .ppr-ltr,
+.ppr-header .ppr-ltr,
+.ppr-footer .ppr-ltr {
+    /*rtl:ignore*/
+    direction: ltr;
+    /*rtl:ignore*/
+    unicode-bidi: embed;
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Added next to the standard "Purchase" analysis; nothing standard is replaced. -->
+    <menuitem id="menu_po_product_profit_report"
+              name="Product Profit (PO Rates)"
+              parent="purchase.purchase_report_main"
+              action="action_po_product_profit_wizard"
+              groups="purchase.group_purchase_manager"
+              sequence="120"/>
+</odoo>

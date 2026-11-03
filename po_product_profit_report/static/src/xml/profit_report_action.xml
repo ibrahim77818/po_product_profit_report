@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="po_product_profit_report.ProfitReport" owl="1">
+        <div class="o_action o_ppr h-100 d-flex flex-column">
+            <!-- Control panel -->
+            <div class="o_ppr_toolbar d-flex flex-wrap align-items-center gap-2 px-3 py-2 border-bottom bg-view">
+                <h4 class="m-0 me-3 o_ppr_title">PO Product Profit Report</h4>
+                <button class="btn btn-primary btn-sm" t-on-click="changeFilters">
+                    <i class="fa fa-filter me-1"/>Filters
+                </button>
+                <button class="btn btn-secondary btn-sm" t-on-click="printPdf">
+                    <i class="fa fa-file-pdf-o me-1"/>PDF
+                </button>
+                <button class="btn btn-secondary btn-sm" t-on-click="exportXlsx">
+                    <i class="fa fa-file-excel-o me-1"/>Excel
+                </button>
+                <div class="btn-group btn-group-sm ms-2" role="group">
+                    <button t-attf-class="btn #{isDetailed ? 'btn-dark' : 'btn-outline-dark'}"
+                            t-on-click="() => this.setMode('detailed')">Detailed</button>
+                    <button t-attf-class="btn #{isDetailed ? 'btn-outline-dark' : 'btn-dark'}"
+                            t-on-click="() => this.setMode('totals')">Totals Only</button>
+                </div>
+                <t t-if="isDetailed">
+                    <button class="btn btn-link btn-sm" t-on-click="expandAll">
+                        <i class="fa fa-plus-square-o me-1"/>Expand all</button>
+                    <button class="btn btn-link btn-sm" t-on-click="collapseAll">
+                        <i class="fa fa-minus-square-o me-1"/>Collapse all</button>
+                </t>
+                <div class="ms-auto input-group input-group-sm o_ppr_search">
+                    <span class="input-group-text"><i class="fa fa-search"/></span>
+                    <input type="text" class="form-control" placeholder="Product, reference or barcode…"
+                           t-model="state.search" t-on-keydown="onSearchKeydown"/>
+                    <button t-if="state.options.search" class="btn btn-outline-secondary"
+                            t-on-click="clearSearch" title="Clear"><i class="fa fa-times"/></button>
+                </div>
+            </div>
+
+            <div class="o_ppr_body flex-grow-1 overflow-auto px-3 pb-3">
+                <!-- Filter chips -->
+                <div class="o_ppr_filters d-flex flex-wrap gap-2 my-2 small">
+                    <span class="badge rounded-pill text-bg-light border"><b>Period</b>: <span dir="auto" t-esc="state.filters.period"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Documents</b>: <span dir="auto" t-esc="state.filters.doc_type"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Vendors</b>: <span dir="auto" t-esc="state.filters.vendors"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Products</b>: <span dir="auto" t-esc="state.filters.products"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Warehouses</b>: <span dir="auto" t-esc="state.filters.warehouses"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Companies</b>: <span dir="auto" t-esc="state.filters.companies"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Sold Qty</b>: <span dir="auto" t-esc="state.filters.sale_basis"/></span>
+                    <span class="badge rounded-pill text-bg-light border"><b>Currency</b>: <span dir="auto" t-esc="state.filters.currency"/></span>
+                </div>
+
+                <!-- KPIs -->
+                <div class="o_ppr_kpis d-flex flex-wrap gap-2 mb-3">
+                    <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Purchased Amount</div>
+                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.amount, 'amount')"/></div>
+                    <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Sales Amount</div>
+                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.sales_amount, 'amount')"/></div>
+                    <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Gross Profit</div>
+                        <div t-attf-class="o_ppr_kpi_value #{isNegative(state.totals.gross_profit) ? 'text-danger' : 'text-success'}"
+                             t-esc="fmt(state.totals.gross_profit, 'amount')"/></div>
+                    <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Margin</div>
+                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.margin, 'pct')"/></div>
+                    <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Pending Qty</div>
+                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.pending, 'qty')"/></div>
+                    <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Purchase Orders</div>
+                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.po_count, 'int')"/></div>
+                    <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Products</div>
+                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.count, 'int')"/></div>
+                    <div class="o_ppr_kpi"><div class="o_ppr_kpi_label">Vendors</div>
+                        <div class="o_ppr_kpi_value" t-esc="fmt(state.totals.vendor_count, 'int')"/></div>
+                </div>
+
+                <div t-if="state.loading" class="text-center text-muted py-5">
+                    <i class="fa fa-circle-o-notch fa-spin fa-2x"/>
+                </div>
+                <div t-elif="!state.rows.length" class="o_view_nocontent">
+                    <div class="o_nocontent_help">
+                        <p class="o_view_nocontent_empty_folder">No purchases match these filters</p>
+                        <p>Widen the period or change the document type, vendors or warehouses.</p>
+                    </div>
+                </div>
+                <table t-else="" class="table table-sm table-hover o_ppr_table">
+                    <thead>
+                        <tr>
+                            <th class="o_ppr_col_item" t-on-click="() => this.sortBy({sort: 'name'})">
+                                <t t-if="isDetailed">Item / Vendor / Purchase Order</t>
+                                <t t-else="">Item</t>
+                                <i t-att-class="sortIcon('name')"/>
+                            </th>
+                            <th class="o_ppr_col_date">
+                                <t t-if="isDetailed">Purchase Date</t><t t-else="">Vendor</t>
+                            </th>
+                            <th>Barcode</th>
+                            <th t-foreach="columns" t-as="c" t-key="c.key"
+                                t-attf-class="text-end #{c.sort ? 'o_ppr_sortable' : ''}"
+                                t-on-click="() => this.sortBy(c)">
+                                <t t-esc="c.label"/> <i t-att-class="sortIcon(c.sort)"/>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="state.rows" t-as="row" t-key="row.product_id">
+                            <tr t-attf-class="o_ppr_product #{isDetailed ? 'o_ppr_clickable' : ''} #{state.expanded[row.product_id] ? 'o_ppr_open' : ''}"
+                                t-on-click="() => this.toggleProduct(row)">
+                                <td class="o_ppr_col_item">
+                                    <i t-if="isDetailed" t-attf-class="fa fa-fw #{state.detailLoading[row.product_id] ? 'fa-circle-o-notch fa-spin' : (state.expanded[row.product_id] ? 'fa-caret-down' : 'fa-caret-right')}"/>
+                                    <a href="#" class="o_ppr_link"
+                                       t-on-click.stop.prevent="() => this.openRecord('product.product', row.product_id)"
+                                       dir="auto" t-esc="row.product_label"/>
+                                </td>
+                                <td class="o_ppr_col_date text-muted">
+                                    <t t-if="!isDetailed">
+                                        <span t-if="!row.multi_vendor" dir="auto" t-esc="row.first_vendor_name"/>
+                                        <t t-else="">Multiple vendors</t>
+                                    </t>
+                                    <t t-elif="row.multi_vendor">Multiple vendors</t>
+                                </td>
+                                <td class="text-muted" t-esc="row.barcode or ''"/>
+                                <td t-foreach="columns" t-as="c" t-key="c.key"
+                                    t-attf-class="text-end #{(c.key === 'gross_profit' or c.key === 'margin') and isNegative(row[c.key]) ? 'text-danger' : ''}"
+                                    t-esc="fmt(row[c.key], c.kind)"/>
+                            </tr>
+                            <t t-if="isDetailed and state.expanded[row.product_id] and state.details[row.product_id]">
+                                <t t-foreach="state.details[row.product_id]" t-as="v" t-key="v.vendor_id">
+                                    <tr class="o_ppr_vendor">
+                                        <td class="o_ppr_col_item ps-4">
+                                            <a href="#" class="o_ppr_link"
+                                               t-on-click.prevent="() => this.openRecord('res.partner', v.vendor_id)"
+                                               dir="auto" t-esc="v.vendor_name"/>
+                                        </td>
+                                        <td/>
+                                        <td/>
+                                        <td class="text-end" t-esc="fmt(v.qty, 'qty')"/>
+                                        <td class="text-end" t-esc="fmt(v.amount, 'amount')"/>
+                                        <td class="text-end" t-esc="fmt(v.avg_cost, 'amount')"/>
+                                        <td class="text-end" t-esc="fmt(v.po_count, 'int')"/>
+                                        <td class="text-end" t-esc="fmt(v.received, 'qty')"/>
+                                        <td class="text-end" t-esc="fmt(v.pending, 'qty')"/>
+                                        <td colspan="5"/>
+                                    </tr>
+                                    <tr t-foreach="v.lines" t-as="l" t-key="l.order_id" class="o_ppr_line">
+                                        <td class="o_ppr_col_item o_ppr_indent2">
+                                            <a href="#" class="o_ppr_link"
+                                               t-on-click.prevent="() => this.openRecord('purchase.order', l.order_id)"
+                                               dir="auto" t-esc="l.po_name"/>
+                                            <span t-if="l.is_rfq" class="badge text-bg-warning ms-1">RFQ</span>
+                                        </td>
+                                        <td class="o_ppr_col_date" t-esc="fmtDate(l.po_date)"/>
+                                        <td/>
+                                        <td class="text-end" t-esc="fmt(l.qty, 'qty')"/>
+                                        <td class="text-end" t-esc="fmt(l.amount, 'amount')"/>
+                                        <td class="text-end" t-esc="fmt(l.avg_cost, 'amount')"/>
+                                        <td class="text-end">1</td>
+                                        <td class="text-end" t-esc="fmt(l.received, 'qty')"/>
+                                        <td t-attf-class="text-end #{l.pending ? 'text-warning fw-bold' : ''}" t-esc="fmt(l.pending, 'qty')"/>
+                                        <td colspan="5"/>
+                                    </tr>
+                                </t>
+                            </t>
+                        </t>
+                    </tbody>
+                    <tfoot>
+                        <tr class="o_ppr_total">
+                            <td class="o_ppr_col_item">
+                                Grand Total
+                                <span class="text-muted fw-normal small ms-1">
+                                    (<t t-esc="state.rows.length"/> / <t t-esc="state.totals.count"/> products shown)
+                                </span>
+                            </td>
+                            <td/>
+                            <td/>
+                            <td class="text-end" t-esc="fmt(state.totals.qty, 'qty')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.amount, 'amount')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.avg_cost, 'amount')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.po_count, 'int')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.received, 'qty')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.pending, 'qty')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.sold_qty, 'qty')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.sale_rate, 'amount')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.sales_amount, 'amount')"/>
+                            <td t-attf-class="text-end #{isNegative(state.totals.gross_profit) ? 'text-danger' : ''}"
+                                t-esc="fmt(state.totals.gross_profit, 'amount')"/>
+                            <td class="text-end" t-esc="fmt(state.totals.margin, 'pct')"/>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div t-if="hasMore and !state.loading" class="text-center my-2">
+                    <button class="btn btn-outline-primary btn-sm" t-on-click="loadMore"
+                            t-att-disabled="state.loadingMore">
+                        <i t-if="state.loadingMore" class="fa fa-circle-o-notch fa-spin me-1"/>
+                        Load more products
+                    </button>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

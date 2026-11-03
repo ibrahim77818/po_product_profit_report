@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="po_product_profit_wizard_view_form" model="ir.ui.view">
+        <field name="name">po.product.profit.wizard.form</field>
+        <field name="model">po.product.profit.wizard</field>
+        <field name="arch" type="xml">
+            <form string="PO Product Profit Report">
+                <div class="alert alert-info mb-3" role="note">
+                    Purchased quantities and amounts use the actual unit price of every
+                    purchase order line, never the product cost. Gross profit compares the
+                    sales of the period with the weighted average purchase rate.
+                </div>
+                <group>
+                    <group string="Period">
+                        <field name="period" widget="radio" options="{'horizontal': false}"/>
+                        <label for="date_from" string="Dates"/>
+                        <div class="o_row">
+                            <field name="date_from" class="oe_inline"/>
+                            <span class="mx-1">→</span>
+                            <field name="date_to" class="oe_inline"/>
+                        </div>
+                    </group>
+                    <group string="Scope">
+                        <field name="doc_type" widget="radio" options="{'horizontal': true}"/>
+                        <field name="partner_ids" widget="many2many_tags"
+                               placeholder="All vendors"
+                               context="{'res_partner_search_mode': 'supplier'}"/>
+                        <field name="product_ids" widget="many2many_tags"
+                               placeholder="All products"/>
+                        <field name="warehouse_ids" widget="many2many_tags"
+                               placeholder="All warehouses"
+                               domain="[('company_id', 'in', company_ids)]"
+                               options="{'no_create': True}"/>
+                        <field name="company_ids" widget="many2many_tags"
+                               groups="base.group_multi_company"
+                               options="{'no_create': True}"/>
+                        <field name="company_ids" invisible="1"
+                               groups="!base.group_multi_company"/>
+                    </group>
+                    <group string="Layout">
+                        <field name="mode" widget="radio" options="{'horizontal': true}"/>
+                        <field name="sort_by"/>
+                    </group>
+                    <group string="Sales">
+                        <field name="sale_basis"/>
+                        <field name="currency_id" readonly="1" options="{'no_open': True}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_view_web" type="object" string="View Report"
+                            class="btn-primary" data-hotkey="q" icon="fa-table"/>
+                    <button name="action_print_pdf" type="object" string="Print PDF"
+                            class="btn-secondary" data-hotkey="w" icon="fa-file-pdf-o"/>
+                    <button name="action_export_xlsx" type="object" string="Export Excel"
+                            class="btn-secondary" data-hotkey="e" icon="fa-file-excel-o"/>
+                    <button string="Cancel" class="btn-link" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_po_product_profit_wizard" model="ir.actions.act_window">
+        <field name="name">PO Product Profit Report</field>
+        <field name="res_model">po.product.profit.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,225 @@
+<!-- Odoo Apps description page for po_product_profit_report (Odoo 16.0). Inline styles only: apps.odoo.com strips <style> and <script> blocks. -->
+<section style="max-width:1120px;margin:0 auto;padding:0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#2b2b33;">
+
+  <!-- ============================== HERO ============================== -->
+  <div style="background:linear-gradient(120deg,#017E84 0%,#3d6b78 45%,#714B67 100%);border-radius:18px;padding:48px 40px 40px;color:#ffffff;margin-top:12px;">
+    <div style="font-size:13px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-bottom:10px;">Purchase &middot; Sales &middot; Profitability</div>
+    <h1 style="font-size:40px;line-height:1.15;font-weight:700;margin:0 0 14px;color:#ffffff;">PO Product Profit Report</h1>
+    <p style="font-size:19px;line-height:1.55;max-width:760px;margin:0 0 24px;color:#ffffff;opacity:.95;">See, for every product, what you bought at the <b>actual purchase order rates</b>, what is received and still pending, what you sold in the same period and the gross profit you made. Drill down to vendor and PO, then print it as a PDF or export it to Excel.</p>
+    <div>
+      <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Odoo 16.0</span>
+      <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Community &amp; Enterprise</span>
+      <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">16 automated tests</span>
+      <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Arabic (ar_001) &amp; RTL</span>
+      <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Technical name: po_product_profit_report</span>
+      <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">LGPL-3</span>
+    </div>
+  </div>
+
+  <!-- ============================== KEY NUMBERS ============================== -->
+  <div style="display:flex;flex-wrap:wrap;margin:28px -8px 8px;">
+    <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">1.2M lines</div><div style="font-size:15px;color:#555;">Benchmarked on 1.2&nbsp;million PO lines and 600,000 sale lines</div></div>
+    <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">0.2 s</div><div style="font-size:15px;color:#555;">A full month on that data set; one product drill-down in 0.01&nbsp;s</div></div>
+    <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">3 outputs</div><div style="font-size:15px;color:#555;">Interactive web view, PDF (with Arabic RTL) and formatted Excel</div></div>
+    <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">0 overrides</div><div style="font-size:15px;color:#555;">Adds a new report; no standard Odoo report or view is replaced</div></div>
+  </div>
+
+  <!-- ============================== WHY ============================== -->
+  <h2 style="font-size:28px;font-weight:700;margin:40px 0 6px;color:#2b2b33;">Why this module</h2>
+  <p style="font-size:16px;color:#555;margin:0 0 18px;">Purchasing managers need one answer: for what we bought this period, at the prices we really paid, how much have we received, how much is still open, and are we making money when we sell it?</p>
+  <div style="display:flex;flex-wrap:wrap;margin:0 -10px;">
+    <div style="flex:1 1 440px;margin:10px;border:1px solid #f1d6d6;background:#fff8f8;border-radius:14px;padding:24px 26px;">
+      <h3 style="font-size:19px;font-weight:700;color:#b33939;margin:0 0 12px;">In standard Odoo 16</h3>
+      <ul style="font-size:15px;line-height:1.65;margin:0;padding-left:20px;color:#3a3a42;">
+        <li><b>Purchase Analysis</b> shows ordered and received quantities, but <b>no sales</b> next to them.</li>
+        <li>Sales margin (with the <i>sale_margin</i> module) uses the <b>product cost</b>, not the prices on your purchase orders.</li>
+        <li>Buying 10&nbsp;@&nbsp;1 and 10&nbsp;@&nbsp;2 is hard to read back as one product line with its <b>real average rate</b>.</li>
+        <li>Purchased, received, pending and sold quantities live in <b>different reports</b>.</li>
+        <li>The pivot has <b>no printable PDF</b> layout of the analysis.</li>
+        <li>Large histories make ad-hoc analysis <b>slow</b> to explore.</li>
+      </ul>
+    </div>
+    <div style="flex:1 1 440px;margin:10px;border:1px solid #cfe7e7;background:#f4fbfb;border-radius:14px;padding:24px 26px;">
+      <h3 style="font-size:19px;font-weight:700;color:#017E84;margin:0 0 12px;">With this module</h3>
+      <ul style="font-size:15px;line-height:1.65;margin:0;padding-left:20px;color:#3a3a42;">
+        <li>One line per product with purchases <b>and</b> sold quantity, sale rate and <b>gross profit</b> for the same period.</li>
+        <li>Cost of what you sold is valued at the <b>weighted average actual PO rate</b> of the purchases shown.</li>
+        <li>10&nbsp;@&nbsp;1 + 10&nbsp;@&nbsp;2 = <b>30</b>, average <b>1.50</b>, with each PO visible underneath.</li>
+        <li><b>Purchased, Received, Pending</b> and <b>Sold</b> quantities side by side, by product, vendor and PO.</li>
+        <li>A landscape <b>PDF</b> with repeated column headers, plus a formatted <b>Excel</b> file with live subtotals.</li>
+        <li>Set-based SQL with covering indexes and <b>parallel aggregation</b>; PO detail is loaded only when you open a product.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================== HOW IT WORKS ============================== -->
+  <h2 style="font-size:28px;font-weight:700;margin:40px 0 6px;color:#2b2b33;">How it works</h2>
+  <p style="font-size:16px;color:#555;margin:0 0 18px;">Four steps from the Purchase menu to a report you can share.</p>
+  <div style="display:flex;flex-wrap:wrap;margin:0 -8px;">
+    <div style="flex:1 1 200px;margin:8px;border-radius:12px;border:1px solid #e3dde2;padding:18px;"><div style="width:34px;height:34px;border-radius:50%;background:#714B67;color:#fff;font-weight:700;text-align:center;line-height:34px;margin-bottom:10px;">1</div><div style="font-weight:700;margin-bottom:4px;">Open</div><div style="font-size:14px;color:#555;">Purchase &rsaquo; Reporting &rsaquo; <b>Product Profit (PO Rates)</b>.</div></div>
+    <div style="flex:1 1 200px;margin:8px;border-radius:12px;border:1px solid #e3dde2;padding:18px;"><div style="width:34px;height:34px;border-radius:50%;background:#714B67;color:#fff;font-weight:700;text-align:center;line-height:34px;margin-bottom:10px;">2</div><div style="font-weight:700;margin-bottom:4px;">Filter</div><div style="font-size:14px;color:#555;">Pick a period, RFQs or POs, vendors, products, warehouses and companies.</div></div>
+    <div style="flex:1 1 200px;margin:8px;border-radius:12px;border:1px solid #e3dde2;padding:18px;"><div style="width:34px;height:34px;border-radius:50%;background:#714B67;color:#fff;font-weight:700;text-align:center;line-height:34px;margin-bottom:10px;">3</div><div style="font-weight:700;margin-bottom:4px;">Explore</div><div style="font-size:14px;color:#555;">Sort, search and expand products down to vendor and purchase order.</div></div>
+    <div style="flex:1 1 200px;margin:8px;border-radius:12px;border:1px solid #cfe7e7;background:#f4fbfb;padding:18px;"><div style="width:34px;height:34px;border-radius:50%;background:#017E84;color:#fff;font-weight:700;text-align:center;line-height:34px;margin-bottom:10px;">4</div><div style="font-weight:700;margin-bottom:4px;">Share</div><div style="font-size:14px;color:#555;">Print the PDF or export Excel, in Detailed or Totals Only mode.</div></div>
+  </div>
+
+  <!-- ============================== FEATURES ============================== -->
+  <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Features</h2>
+  <p style="font-size:16px;color:#555;margin:0;">Screenshots use demo data for a trading company: 12 office-supply products, 6 vendors, two warehouses (Jeddah and Riyadh), Q3&nbsp;2026 purchases at tiered prices (one in USD, one line bought by the dozen), open RFQs and confirmed sales.</p>
+
+  <div style="margin:36px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Menus</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Right next to the standard purchase analysis</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">The report is added under <b>Purchase &rsaquo; Reporting &rsaquo; Product Profit (PO Rates)</b>, beside the standard <b>Purchase</b> analysis, which stays untouched. It is visible to <b>Purchase Administrators</b>.</p>
+    <img src="ppr_01_menu.png" alt="Purchase Reporting menu with the Product Profit (PO Rates) entry" style="width:100%;max-width:760px;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  </div>
+
+  <div style="margin:44px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 1</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">One wizard for every question</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;"><b>Period</b> presets (This Month, Last Month, This Quarter, Last Quarter, This Year, Last Year) or a <b>Custom Range</b>; <b>Document Type</b>: <b>RFQs</b>, <b>Purchase Orders</b> or <b>Both</b> (cancelled orders are always excluded); <b>Vendors</b>, <b>Products</b>, <b>Warehouses</b> and <b>Companies</b>; <b>Report Mode</b>: <b>Detailed</b> or <b>Totals Only</b>; <b>Sort Products By</b> amount, profit, margin, quantities or name; and the <b>Sold Quantity Basis</b>: ordered, delivered or invoiced. Buttons: <b>View Report</b>, <b>Print PDF</b>, <b>Export Excel</b>.</p>
+    <img src="ppr_02_wizard.png" alt="Report wizard with period, scope, layout and sales options" style="width:100%;max-width:1000px;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  </div>
+
+  <div style="margin:44px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 2</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Purchases, receipts and sales of each product on one line</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">Eight summary cards (Purchased Amount, Sales Amount, Gross Profit, Margin, Pending Qty, Purchase Orders, Products, Vendors) above a table with <b>Purchased Qty</b>, <b>Purchased Amount</b>, <b>Avg. PO Rate</b>, <b>No. of POs</b>, <b>Received Qty</b>, <b>Pending Qty</b>, <b>Sold Qty</b>, <b>Sale Rate</b>, <b>Sales Amount</b>, <b>Gross Profit</b> and <b>Margin %</b>. Click a product to expand it into vendors and purchase orders, with a vendor subtotal for each.</p>
+    <img src="ppr_03_web_view.png" alt="Interactive web view with summary cards and two expanded products" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+    <div style="background:#f4fbfb;border-left:4px solid #017E84;border-radius:8px;padding:16px 20px;font-size:15px;line-height:1.6;margin-top:18px;"><b>Actual PO rates, worked example:</b> the Ergonomic Office Chair was bought as 20&nbsp;@&nbsp;92.00 and 25&nbsp;@&nbsp;95.50 from Al Rawabi Furniture and 15&nbsp;@&nbsp;98.00 from Gulf Office Supplies. Purchased Amount = 1,840.00 + 2,387.50 + 1,470.00 = <b>5,697.50</b> for 60 units, so Avg. PO Rate = <b>94.96</b>. The product&rsquo;s cost field is never used.</div>
+  </div>
+
+  <div style="margin:44px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 3</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Drill down to every purchase order, RFQs included</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">With <b>Document Type = Both</b>, open requests for quotation appear with an <b>RFQ</b> badge next to confirmed orders. Pending quantities are highlighted, and product, vendor and PO names open the record in one click. PO detail is fetched only when you expand a product, so the page stays fast however long the period is.</p>
+    <img src="ppr_04_drilldown.png" alt="Expanded products showing vendors, purchase orders, RFQ badges and pending quantities" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  </div>
+
+  <div style="margin:44px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 4</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Totals Only: one consolidated line per product</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">Switch between <b>Detailed</b> and <b>Totals Only</b> without reloading. Click any column header to sort (here by <b>Margin %</b>). The <b>Vendor</b> column shows the supplier, or <b>Multiple vendors</b> when a product came from more than one.</p>
+    <img src="ppr_05_totals_only.png" alt="Totals Only mode sorted by margin" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  </div>
+
+  <div style="margin:44px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 5</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Search and warehouse scope</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">Search by product name, internal reference or barcode. Grand totals follow the search. With a <b>Warehouses</b> filter, purchases count by the warehouse of their receipt operation and sales by the warehouse of the sale order. Below, Riyadh Warehouse only: the LED Desk Lamp was bought for Riyadh but sold from Jeddah, so it shows no sales here.</p>
+    <img src="ppr_06_search_warehouse.png" alt="Search for desk restricted to the Riyadh warehouse" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  </div>
+
+  <div style="margin:44px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 6</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">A PDF built for long reports</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">A4 landscape with its own compact header (company logo, period, mode, currency, print time) and footer (page X / Y). The header has a fixed height inside a reserved top margin, so it <b>never overlaps the table</b>, and column headers <b>repeat on every page</b>. Product lines, vendor subtotals and the grand total are banded for reading on paper.</p>
+    <img src="ppr_07_pdf_detailed.png" alt="Detailed PDF report, first page" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  </div>
+
+  <div style="margin:44px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 7</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Arabic, right to left, done properly</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">A complete <b>ar_001</b> translation ships with the module. Layouts mirror for right-to-left languages, while numbers, negative signs, product references such as &ldquo;[FUR-001] Ergonomic Office Chair&rdquo;, PO numbers and dates keep their left-to-right order, both on screen and in the PDF.</p>
+    <img src="ppr_10_web_arabic.png" alt="Web view in Arabic, right to left" style="width:100%;margin-bottom:22px;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+    <img src="ppr_08_pdf_arabic.png" alt="Detailed PDF report in Arabic" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  </div>
+
+  <div style="margin:44px 0 0;">
+    <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 8</div>
+    <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Excel with live subtotals and grand totals</h3>
+    <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">A title and filter block, frozen headers, AutoFilter and landscape print setup. Product totals, vendor subtotals and the grand total are live <b>SUBTOTAL</b> formulas, so the totals stay right when you filter the sheet. Detailed mode uses Excel <b>outline levels</b>: collapse to product totals with the [1] [2] [3] buttons. Extra columns: <b>Document</b> (PO / RFQ), <b>Sales Amount</b> and <b>Cost of Sold Qty</b>. Large exports are streamed row by row, so memory stays flat.</p>
+    <img src="ppr_09_excel.png" alt="Excel export with product totals and vendor subtotals" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  </div>
+
+  <!-- ============================== FORMULAS ============================== -->
+  <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">How each figure is calculated</h2>
+  <p style="font-size:16px;color:#555;margin:0 0 18px;">All amounts are untaxed and converted to the report currency.</p>
+  <table style="width:100%;border-collapse:collapse;font-size:15px;">
+    <thead><tr style="background:#714B67;color:#fff;"><th style="text-align:left;padding:10px 14px;width:220px;">Figure</th><th style="text-align:left;padding:10px 14px;">Definition</th></tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Purchased Qty</b></td><td style="padding:10px 14px;">PO line quantities in the product&rsquo;s unit of measure (2 Dozens = 24 Units).</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>Purchased Amount</b></td><td style="padding:10px 14px;">Sum of PO line subtotals: the actual unit price &times; quantity, as stored on the purchase order line.</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Avg. PO Rate</b></td><td style="padding:10px 14px;">Purchased Amount &divide; Purchased Qty.</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>No. of POs</b></td><td style="padding:10px 14px;">Distinct purchase orders. A PO with the same product on two lines counts once.</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Received / Pending Qty</b></td><td style="padding:10px 14px;">Received quantity of the lines; Pending = Purchased &minus; Received, never below zero, per line.</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>Sold Qty / Sales Amount</b></td><td style="padding:10px 14px;">Confirmed sale orders dated in the period, by the chosen basis: ordered, delivered or invoiced quantity.</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Sale Rate</b></td><td style="padding:10px 14px;">Sales Amount &divide; Sold Qty.</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>Gross Profit</b></td><td style="padding:10px 14px;">Sales Amount &minus; Sold Qty &times; Avg. PO Rate.</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Margin %</b></td><td style="padding:10px 14px;">Gross Profit &divide; Sales Amount &times; 100.</td></tr>
+    </tbody>
+  </table>
+  <div style="background:#f4fbfb;border-left:4px solid #017E84;border-radius:8px;padding:16px 20px;font-size:15px;line-height:1.6;margin-top:14px;"><b>Sales are measured per product.</b> A sale is not linked to a specific purchase order, so Sold Qty, Sale Rate, Gross Profit and Margin appear on the product line, while vendor and PO lines show the purchase side.</div>
+
+  <!-- ============================== CORNER CASES ============================== -->
+  <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Built for real-world corner cases</h2>
+  <p style="font-size:16px;color:#555;margin:0 0 18px;">Each of these is covered by the automated tests.</p>
+  <div style="display:flex;flex-wrap:wrap;margin:0 -8px;font-size:15px;line-height:1.55;">
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Foreign-currency purchase orders</b><br/><span style="color:#555;">Converted with the rate Odoo stored on the order at its date. A 1,920.00 USD order at 1.08 is reported as 1,777.78 EUR.</span></div>
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Several companies, several currencies</b><br/><span style="color:#555;">Limited to the companies allowed in your company switcher; each company&rsquo;s amounts are converted to the report currency.</span></div>
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Units of measure</b><br/><span style="color:#555;">Pens bought by the dozen and sold by the unit are compared in units, on both the purchase and the sales side.</span></div>
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Same product twice on one PO</b><br/><span style="color:#555;">Quantities add up, but No. of POs counts the order once.</span></div>
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Vendor contacts</b><br/><span style="color:#555;">An order placed with a contact of a vendor company is grouped under that company, and a vendor filter includes its contacts.</span></div>
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Period boundaries in your timezone</b><br/><span style="color:#555;">An order at 22:30 UTC on 31 March belongs to April for a user in Riyadh (UTC+3), and the report follows that.</span></div>
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Over-receipts</b><br/><span style="color:#555;">Pending is computed per line, so receiving too much on one line never hides a shortfall on another.</span></div>
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Cancelled orders and drafts</b><br/><span style="color:#555;">Cancelled purchase orders are always excluded; draft and cancelled sale orders never count as sold; down-payment lines are ignored.</span></div>
+    <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Very large selections</b><br/><span style="color:#555;">The web view loads 200 products at a time. A detailed PDF over 20,000 rows is refused with a clear message; Excel has no such limit.</span></div>
+  </div>
+
+  <!-- ============================== PERFORMANCE ============================== -->
+  <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Measured performance</h2>
+  <p style="font-size:16px;color:#555;margin:0 0 18px;">On 100,000 purchase orders with 1.2&nbsp;million lines, 2,000 products and 600,000 sale lines (PostgreSQL 16, 2 vCPU). Median of 5 runs, product rows and grand totals included.</p>
+  <table style="width:100%;border-collapse:collapse;font-size:15px;">
+    <thead><tr style="background:#714B67;color:#fff;"><th style="text-align:left;padding:10px 14px;">Selection</th><th style="text-align:right;padding:10px 14px;">Time</th></tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">Drill-down: one product, 3 years of PO detail</td><td style="padding:10px 14px;text-align:right;">0.01&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">One product, 3 years</td><td style="padding:10px 14px;text-align:right;">0.02&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">One vendor, 3 years</td><td style="padding:10px 14px;text-align:right;">0.10&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">One month, all products</td><td style="padding:10px 14px;text-align:right;">0.21&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">One quarter, all products</td><td style="padding:10px 14px;text-align:right;">0.34&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">Search by reference, 3 years</td><td style="padding:10px 14px;text-align:right;">0.52&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">Everything, 3 years (1.2M lines)</td><td style="padding:10px 14px;text-align:right;">1.7&nbsp;s</td></tr>
+    </tbody>
+  </table>
+  <div style="background:#f4fbfb;border-left:4px solid #017E84;border-radius:8px;padding:16px 20px;font-size:15px;line-height:1.6;margin-top:14px;"><b>How:</b> each total is one SQL aggregate over covering indexes that PostgreSQL runs in parallel; no Python loop ever reads order lines. The four indexes are created on install and removed on uninstall. Installing on a very large database builds them once, which briefly blocks writes to the order tables, so plan the install outside working hours.</div>
+
+  <!-- ============================== SECURITY ============================== -->
+  <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Security</h2>
+  <p style="font-size:16px;color:#555;margin:0 0 18px;">The report shows purchase prices and sales figures together, so access is restricted.</p>
+  <table style="width:100%;border-collapse:collapse;font-size:15px;">
+    <thead><tr style="background:#714B67;color:#fff;"><th style="text-align:left;padding:10px 14px;width:280px;">Who</th><th style="text-align:left;padding:10px 14px;">Sees</th></tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Purchase / Administrator</b></td><td style="padding:10px 14px;">The menu, the wizard, the web view, PDF and Excel.</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>Purchase / User</b> and other users</td><td style="padding:10px 14px;">No menu; direct calls to the report are refused (checked on the server, tested).</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Multi-company</b></td><td style="padding:10px 14px;">Only companies allowed in the user&rsquo;s company switcher, whatever is sent by the browser.</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>Wizard records</b></td><td style="padding:10px 14px;">Temporary (transient) records, cleaned up automatically by Odoo. The web view itself keeps no data on the server between clicks.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================== TECHNICAL ============================== -->
+  <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Technical details</h2>
+  <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:12px;">
+    <tbody>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;width:240px;color:#777;">Odoo version</td><td style="padding:10px 14px;">16.0, Community and Enterprise</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Depends on</td><td style="padding:10px 14px;"><code>purchase_stock</code>, <code>sale_stock</code></td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Python dependency</td><td style="padding:10px 14px;">None beyond Odoo (<code>xlsxwriter</code> ships with Odoo)</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Menus</td><td style="padding:10px 14px;">Purchase &rsaquo; Reporting &rsaquo; Product Profit (PO Rates)</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Settings</td><td style="padding:10px 14px;">None needed; every option is in the wizard</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Models</td><td style="padding:10px 14px;"><code>po.product.profit.wizard</code> (wizard), <code>po.product.profit.engine</code> (SQL engine), <code>po.product.profit.xlsx</code> (Excel), <code>po.product.profit.format</code> (number formatting), <code>report.po_product_profit_report.report_po_product_profit</code> (PDF)</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Database</td><td style="padding:10px 14px;">4 covering indexes on <code>purchase_order</code>, <code>purchase_order_line</code>, <code>sale_order</code>, <code>sale_order_line</code>; dropped on uninstall</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Standard reports</td><td style="padding:10px 14px;">None replaced or modified</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Translations</td><td style="padding:10px 14px;">Arabic (<code>ar_001</code>), 124 terms, 100%</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Automated tests</td><td style="padding:10px 14px;">16: multi-tier PO rates, all metrics, units of measure, RFQ / PO / Both, timezone boundaries, warehouse filter, foreign currency, grand totals and paging, drill-down and streaming, sorting, search and sold basis, security and input checks, wizard actions, PDF (detailed, totals, Arabic RTL), Excel, indexes, same product twice on one PO</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">License</td><td style="padding:10px 14px;">LGPL-3</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================== CONTACT ============================== -->
+  <div style="margin:52px 0 40px;background:linear-gradient(120deg,#714B67 0%,#017E84 100%);border-radius:18px;padding:36px 40px;color:#fff;">
+    <h2 style="font-size:26px;font-weight:700;margin:0 0 8px;color:#fff;">Support &amp; customization</h2>
+    <p style="font-size:16px;line-height:1.6;margin:0 0 20px;color:#fff;opacity:.95;">Questions, a demo, or an adaptation to your own process? Get in touch.</p>
+    <a href="mailto:ibrahim.yahiah@gmail.com" style="display:inline-block;background:#fff;color:#714B67;font-weight:700;text-decoration:none;border-radius:8px;padding:12px 22px;margin:0 12px 10px 0;">&#9993;&nbsp; ibrahim.yahiah@gmail.com</a>
+    <a href="https://www.linkedin.com/in/ibrahim-yahia" target="_blank" rel="noopener" style="display:inline-block;border:2px solid #fff;color:#fff;font-weight:700;text-decoration:none;border-radius:8px;padding:10px 22px;margin:0 0 10px 0;">LinkedIn: Ibrahim Yahia</a>
+    <p style="font-size:13px;margin:14px 0 0;opacity:.8;color:#fff;">Author: Ibrahim Yahia &middot; License: LGPL-3</p>
+  </div>
+
+</section>

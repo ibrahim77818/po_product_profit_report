@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Landscape A4. The header is a fixed-height block (see the .ppr-header
+        rule in profit_report_pdf.scss: 20mm) rendered by wkhtmltopdf inside
+        margin_top. header_spacing leaves ~6mm of air under it, so the body can
+        never ride up under the header whatever the page count.
+    -->
+    <record id="paperformat_po_product_profit" model="report.paperformat">
+        <field name="name">PO Product Profit (A4 Landscape)</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">18</field>
+        <field name="margin_left">8</field>
+        <field name="margin_right">8</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">24</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <record id="action_report_po_product_profit" model="ir.actions.report">
+        <field name="name">PO Product Profit Report</field>
+        <field name="model">po.product.profit.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">po_product_profit_report.report_po_product_profit</field>
+        <field name="report_file">po_product_profit_report.report_po_product_profit</field>
+        <field name="print_report_name">'PO Product Profit Report'</field>
+        <field name="paperformat_id" ref="paperformat_po_product_profit"/>
+        <!-- No binding: printed from the wizard / web view only. -->
+    </record>
+
+    <template id="report_po_product_profit_header">
+        <div class="header ppr-header">
+            <table class="ppr-header-table">
+                <tr>
+                    <td class="ppr-header-logo">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                    </td>
+                    <td class="ppr-header-title">
+                        <div class="ppr-title">PO Product Profit Report</div>
+                        <div class="ppr-subtitle">
+                            <span t-att-class="bidi(company.name)" t-esc="company.name"/> ·
+                            <span class="ppr-ltr" t-esc="filters['period']"/> ·
+                            <span t-esc="filters['mode']"/>
+                        </div>
+                    </td>
+                    <td class="ppr-header-meta">
+                        <div><span>Currency</span>: <strong t-esc="filters['currency']"/></div>
+                        <div><span>Printed</span>: <span class="ppr-ltr" t-esc="printed_at"/></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <template id="report_po_product_profit_footer">
+        <div class="footer ppr-footer">
+            <table class="ppr-footer-table">
+                <tr>
+                    <td class="ppr-footer-left"><span t-att-class="bidi(company.name)" t-esc="company.name"/></td>
+                    <td class="ppr-footer-right">
+                        <span>Page</span> <span class="page"/> / <span class="topage"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <template id="report_po_product_profit">
+        <t t-call="web.html_container">
+            <t t-call="po_product_profit_report.report_po_product_profit_header"/>
+            <div class="article ppr-report" t-att-data-oe-lang="lang">
+                <div class="page">
+                    <!-- Filters -->
+                    <table class="ppr-filters">
+                        <tr>
+                            <th>Period</th><td><span t-att-class="bidi(filters['period'])" t-esc="filters['period']"/></td>
+                            <th>Document Type</th><td><span t-att-class="bidi(filters['doc_type'])" t-esc="filters['doc_type']"/></td>
+                            <th>Report Mode</th><td><span t-att-class="bidi(filters['mode'])" t-esc="filters['mode']"/></td>
+                        </tr>
+                        <tr>
+                            <th>Vendors</th><td><span t-att-class="bidi(filters['vendors'])" t-esc="filters['vendors']"/></td>
+                            <th>Products</th><td><span t-att-class="bidi(filters['products'])" t-esc="filters['products']"/></td>
+                            <th>Sold Quantity Basis</th><td><span t-att-class="bidi(filters['sale_basis'])" t-esc="filters['sale_basis']"/></td>
+                        </tr>
+                        <tr>
+                            <th>Warehouses</th><td><span t-att-class="bidi(filters['warehouses'])" t-esc="filters['warehouses']"/></td>
+                            <th>Companies</th><td><span t-att-class="bidi(filters['companies'])" t-esc="filters['companies']"/></td>
+                            <th>Search</th><td><span class="ppr-ltr" t-esc="filters['search'] or '-'"/></td>
+                        </tr>
+                    </table>
+
+                    <!-- KPIs -->
+                    <table class="ppr-kpis">
+                        <tr>
+                            <td><div class="ppr-kpi-label">Purchased Amount</div>
+                                <div class="ppr-kpi-value" t-esc="fmt_amount(totals['amount'])"/></td>
+                            <td><div class="ppr-kpi-label">Sales Amount</div>
+                                <div class="ppr-kpi-value" t-esc="fmt_amount(totals['sales_amount'])"/></td>
+                            <td><div class="ppr-kpi-label">Gross Profit</div>
+                                <div t-attf-class="ppr-kpi-value #{totals['gross_profit'] &lt; 0 and 'ppr-neg' or ''}"
+                                     t-esc="fmt_amount(totals['gross_profit'])"/></td>
+                            <td><div class="ppr-kpi-label">Margin</div>
+                                <div class="ppr-kpi-value" t-esc="fmt_pct(totals['margin'])"/></td>
+                            <td><div class="ppr-kpi-label">Purchase Orders</div>
+                                <div class="ppr-kpi-value" t-esc="totals['po_count']"/></td>
+                            <td><div class="ppr-kpi-label">Products</div>
+                                <div class="ppr-kpi-value" t-esc="totals['count']"/></td>
+                            <td><div class="ppr-kpi-label">Vendors</div>
+                                <div class="ppr-kpi-value" t-esc="totals['vendor_count']"/></td>
+                        </tr>
+                    </table>
+
+                    <!-- ================= DETAILED ================= -->
+                    <table t-if="detailed" class="ppr-table">
+                        <thead>
+                            <tr>
+                                <th class="ppr-col-vendor">Vendor</th>
+                                <th class="ppr-col-po">Purchase Order</th>
+                                <th class="ppr-col-date">Purchase Date</th>
+                                <th class="ppr-col-item">Item</th>
+                                <th class="ppr-col-barcode">Barcode</th>
+                                <th class="ppr-num">Purchased Qty</th>
+                                <th class="ppr-num">Purchased Amount</th>
+                                <th class="ppr-num">Avg. PO Rate</th>
+                                <th class="ppr-num ppr-col-small">No. of POs</th>
+                                <th class="ppr-num">Received Qty</th>
+                                <th class="ppr-num">Pending Qty</th>
+                                <th class="ppr-num">Sold Qty</th>
+                                <th class="ppr-num">Sale Rate</th>
+                                <th class="ppr-num">Gross Profit</th>
+                                <th class="ppr-num ppr-col-small">Margin %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="products" t-as="p">
+                                <tr class="ppr-row-product">
+                                    <td colspan="4" class="ppr-item-label">
+                                        <span t-att-class="bidi(p['product_label'])" t-esc="p['product_label']"/>
+                                    </td>
+                                    <td class="ppr-ltr" t-esc="p['barcode'] or ''"/>
+                                    <td class="ppr-num" t-esc="fmt_qty(p['qty'])"/>
+                                    <td class="ppr-num" t-esc="fmt_amount(p['amount'])"/>
+                                    <td class="ppr-num" t-esc="fmt_amount(p['avg_cost'])"/>
+                                    <td class="ppr-num" t-esc="p['po_count']"/>
+                                    <td class="ppr-num" t-esc="fmt_qty(p['received'])"/>
+                                    <td class="ppr-num" t-esc="fmt_qty(p['pending'])"/>
+                                    <td class="ppr-num" t-esc="fmt_qty(p['sold_qty'])"/>
+                                    <td class="ppr-num" t-esc="fmt_amount(p['sale_rate'])"/>
+                                    <td t-attf-class="ppr-num #{p['gross_profit'] &lt; 0 and 'ppr-neg' or ''}"
+                                        t-esc="fmt_amount(p['gross_profit'])"/>
+                                    <td class="ppr-num" t-esc="fmt_pct(p['margin'])"/>
+                                </tr>
+                                <t t-foreach="p['vendors']" t-as="v">
+                                    <tr t-foreach="v['lines']" t-as="l" class="ppr-row-line">
+                                        <td><span t-if="l_first" t-att-class="bidi(v['vendor_name'])" t-esc="v['vendor_name']"/></td>
+                                        <td class="ppr-nowrap">
+                                            <span class="ppr-ltr" t-esc="l['po_name']"/>
+                                            <span t-if="l['is_rfq']" class="ppr-badge">RFQ</span>
+                                        </td>
+                                        <td class="ppr-nowrap" t-esc="fmt_date(l['po_date'])"/>
+                                        <td/>
+                                        <td/>
+                                        <td class="ppr-num" t-esc="fmt_qty(l['qty'])"/>
+                                        <td class="ppr-num" t-esc="fmt_amount(l['amount'])"/>
+                                        <td class="ppr-num" t-esc="fmt_amount(l['avg_cost'])"/>
+                                        <td class="ppr-num">1</td>
+                                        <td class="ppr-num" t-esc="fmt_qty(l['received'])"/>
+                                        <td class="ppr-num" t-esc="fmt_qty(l['pending'])"/>
+                                        <td colspan="4"/>
+                                    </tr>
+                                    <tr t-if="len(v['lines']) &gt; 1" class="ppr-row-vendor">
+                                        <td colspan="5">
+                                            <span>Subtotal</span> · <span t-att-class="bidi(v['vendor_name'])" t-esc="v['vendor_name']"/>
+                                        </td>
+                                        <td class="ppr-num" t-esc="fmt_qty(v['qty'])"/>
+                                        <td class="ppr-num" t-esc="fmt_amount(v['amount'])"/>
+                                        <td class="ppr-num" t-esc="fmt_amount(v['avg_cost'])"/>
+                                        <td class="ppr-num" t-esc="v['po_count']"/>
+                                        <td class="ppr-num" t-esc="fmt_qty(v['received'])"/>
+                                        <td class="ppr-num" t-esc="fmt_qty(v['pending'])"/>
+                                        <td colspan="4"/>
+                                    </tr>
+                                </t>
+                            </t>
+                            <tr class="ppr-row-total">
+                                <td colspan="5">Grand Total</td>
+                                <td class="ppr-num" t-esc="fmt_qty(totals['qty'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(totals['amount'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(totals['avg_cost'])"/>
+                                <td class="ppr-num" t-esc="totals['po_count']"/>
+                                <td class="ppr-num" t-esc="fmt_qty(totals['received'])"/>
+                                <td class="ppr-num" t-esc="fmt_qty(totals['pending'])"/>
+                                <td class="ppr-num" t-esc="fmt_qty(totals['sold_qty'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(totals['sale_rate'])"/>
+                                <td t-attf-class="ppr-num #{totals['gross_profit'] &lt; 0 and 'ppr-neg' or ''}"
+                                    t-esc="fmt_amount(totals['gross_profit'])"/>
+                                <td class="ppr-num" t-esc="fmt_pct(totals['margin'])"/>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- ================= TOTALS ONLY ================= -->
+                    <table t-else="" class="ppr-table">
+                        <thead>
+                            <tr>
+                                <th class="ppr-col-item">Item</th>
+                                <th class="ppr-col-barcode">Barcode</th>
+                                <th class="ppr-col-vendor">Vendor</th>
+                                <th class="ppr-num">Purchased Qty</th>
+                                <th class="ppr-num">Purchased Amount</th>
+                                <th class="ppr-num">Avg. PO Rate</th>
+                                <th class="ppr-num ppr-col-small">No. of POs</th>
+                                <th class="ppr-num">Received Qty</th>
+                                <th class="ppr-num">Pending Qty</th>
+                                <th class="ppr-num">Sold Qty</th>
+                                <th class="ppr-num">Sale Rate</th>
+                                <th class="ppr-num">Sales Amount</th>
+                                <th class="ppr-num">Gross Profit</th>
+                                <th class="ppr-num ppr-col-small">Margin %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="products" t-as="p" class="ppr-row-line">
+                                <td><span t-att-class="bidi(p['product_label'])" t-esc="p['product_label']"/></td>
+                                <td class="ppr-ltr" t-esc="p['barcode'] or ''"/>
+                                <td>
+                                    <t t-if="not p['multi_vendor']" t-esc="p['first_vendor_name']"/>
+                                    <t t-else="">Multiple vendors</t>
+                                </td>
+                                <td class="ppr-num" t-esc="fmt_qty(p['qty'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(p['amount'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(p['avg_cost'])"/>
+                                <td class="ppr-num" t-esc="p['po_count']"/>
+                                <td class="ppr-num" t-esc="fmt_qty(p['received'])"/>
+                                <td class="ppr-num" t-esc="fmt_qty(p['pending'])"/>
+                                <td class="ppr-num" t-esc="fmt_qty(p['sold_qty'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(p['sale_rate'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(p['sales_amount'])"/>
+                                <td t-attf-class="ppr-num #{p['gross_profit'] &lt; 0 and 'ppr-neg' or ''}"
+                                    t-esc="fmt_amount(p['gross_profit'])"/>
+                                <td class="ppr-num" t-esc="fmt_pct(p['margin'])"/>
+                            </tr>
+                            <tr class="ppr-row-total">
+                                <td colspan="3">Grand Total</td>
+                                <td class="ppr-num" t-esc="fmt_qty(totals['qty'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(totals['amount'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(totals['avg_cost'])"/>
+                                <td class="ppr-num" t-esc="totals['po_count']"/>
+                                <td class="ppr-num" t-esc="fmt_qty(totals['received'])"/>
+                                <td class="ppr-num" t-esc="fmt_qty(totals['pending'])"/>
+                                <td class="ppr-num" t-esc="fmt_qty(totals['sold_qty'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(totals['sale_rate'])"/>
+                                <td class="ppr-num" t-esc="fmt_amount(totals['sales_amount'])"/>
+                                <td t-attf-class="ppr-num #{totals['gross_profit'] &lt; 0 and 'ppr-neg' or ''}"
+                                    t-esc="fmt_amount(totals['gross_profit'])"/>
+                                <td class="ppr-num" t-esc="fmt_pct(totals['margin'])"/>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="ppr-note">
+                        Purchased amounts are untaxed and use the actual unit price of each
+                        purchase order line. Gross profit = sales amount − sold quantity ×
+                        average PO rate of the purchases shown. Pending = purchased − received.
+                    </p>
+                </div>
+            </div>
+            <t t-call="po_product_profit_report.report_po_product_profit_footer"/>
+        </t>
+    </template>
+</odoo>

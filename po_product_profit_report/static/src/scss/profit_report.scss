@@ -1,0 +1,61 @@
+.o_ppr {
+    .o_ppr_title { font-weight: 600; }
+    .o_ppr_search { max-width: 340px; }
+
+    .o_ppr_kpi {
+        flex: 1 1 140px;
+        min-width: 140px;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        padding: 10px 14px;
+        background: $o-view-background-color;
+        .o_ppr_kpi_label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: $text-muted;
+        }
+        .o_ppr_kpi_value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    .o_ppr_table {
+        font-variant-numeric: tabular-nums;
+        thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: $o-gray-200;
+            white-space: nowrap;
+            font-size: 0.8rem;
+            vertical-align: bottom;
+            &.o_ppr_sortable { cursor: pointer; }
+        }
+        td { white-space: nowrap; vertical-align: middle; }
+        .o_ppr_col_item { min-width: 280px; white-space: normal; }
+        .o_ppr_col_date { min-width: 110px; }
+        .o_ppr_product {
+            font-weight: 500;
+            &.o_ppr_clickable { cursor: pointer; }
+            &.o_ppr_open { background: rgba($o-brand-primary, .06); }
+        }
+        .o_ppr_vendor {
+            background: $o-gray-100;
+            font-style: italic;
+            font-size: 0.9em;
+        }
+        .o_ppr_line { font-size: 0.88em; color: $o-gray-700; }
+        .o_ppr_indent2 { padding-left: 3rem !important; }
+        .o_ppr_link { color: inherit; &:hover { color: $o-brand-primary; text-decoration: underline; } }
+        tfoot .o_ppr_total td {
+            position: sticky;
+            bottom: 0;
+            background: $o-gray-200;
+            font-weight: 700;
+            border-top: 2px solid $o-gray-500;
+        }
+    }
+}
