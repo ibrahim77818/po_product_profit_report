@@ -13,13 +13,13 @@ from .models.report_engine import REPORT_INDEXES
 _logger = logging.getLogger(__name__)
 
 
-def post_init_hook(cr, registry):
+def post_init_hook(env):
     # Fresh statistics so the planner picks the new indexes immediately.
     for table in sorted({idx[1] for idx in REPORT_INDEXES}):
-        cr.execute('ANALYZE "%s"' % table)
+        env.cr.execute('ANALYZE "%s"' % table)
 
 
-def uninstall_hook(cr, registry):
+def uninstall_hook(env):
     for name, _table, _definition in REPORT_INDEXES:
         _logger.info('po_product_profit_report: dropping index %s', name)
-        cr.execute('DROP INDEX IF EXISTS "%s"' % name)
+        env.cr.execute('DROP INDEX IF EXISTS "%s"' % name)

@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 16:43+0000\n"
-"PO-Revision-Date: 2026-11-03 16:43+0000\n"
+"POT-Creation-Date: 2026-11-03 17:12+0000\n"
+"PO-Revision-Date: 2026-11-03 17:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -309,11 +309,6 @@ msgstr ""
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #, python-format
 msgid "Item / Vendor / Purchase Order"
-msgstr ""
-
-#. module: po_product_profit_report
-#: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: po_product_profit_report

@@ -1,12 +1,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 16:09+0000\n"
-"PO-Revision-Date: 2026-11-03 16:09+0000\n"
+"POT-Creation-Date: 2026-11-03 17:12+0000\n"
+"PO-Revision-Date: 2026-11-03 17:12+0000\n"
 "Last-Translator: Ibrahim Yahia\n"
-"Language-Team: Arabic\n"
+"Language-Team: \n"
 "Language: ar_001\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -285,11 +285,6 @@ msgstr "الصنف"
 #, python-format
 msgid "Item / Vendor / Purchase Order"
 msgstr "الصنف / المورد / أمر الشراء"
-
-#. module: po_product_profit_report
-#: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard____last_update
-msgid "Last Modified on"
-msgstr "آخر تعديل في"
 
 #. module: po_product_profit_report
 #: model:ir.model.fields.selection,name:po_product_profit_report.selection__po_product_profit_wizard__period__last_month

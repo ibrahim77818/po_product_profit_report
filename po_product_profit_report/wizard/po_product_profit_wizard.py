@@ -164,7 +164,7 @@ class PoProductProfitWizard(models.TransientModel):
 
     def action_export_xlsx(self):
         options = self._get_options()
-        self.env['po.product.profit.engine']._check_access()
+        self.env['po.product.profit.engine']._ppr_check_access()
         return {
             'type': 'ir.actions.client',
             'tag': 'po_product_profit_report.download_xlsx',

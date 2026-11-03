@@ -108,7 +108,8 @@ class TestPoProductProfit(TransactionCase):
         picking = po.picking_ids.filtered(lambda p: p.state not in ('done', 'cancel'))
         picking.ensure_one()
         for move in picking.move_ids:
-            move.quantity_done = qty
+            move.quantity = qty
+            move.picked = True
         result = picking.button_validate()
         if isinstance(result, dict) and result.get('res_model') == 'stock.backorder.confirmation':
             Form(cls.env['stock.backorder.confirmation'].with_context(result['context'])) \

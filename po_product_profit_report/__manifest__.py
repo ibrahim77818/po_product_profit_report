@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'PO Product Profit Report',
-    'version': '16.0.1.0.0',
+    'version': '17.0.1.0.0',
     'summary': 'Purchased vs sold profitability per product at actual PO rates '
                '(web, PDF, Excel), built for 1M+ line databases',
     'description': """

@@ -5,7 +5,7 @@
         <field name="model">po.product.profit.wizard</field>
         <field name="arch" type="xml">
             <form string="PO Product Profit Report">
-                <div class="alert alert-info mb-3" role="note">
+                <div class="alert alert-info mb-3" role="status">
                     Purchased quantities and amounts use the actual unit price of every
                     purchase order line, never the product cost. Gross profit compares the
                     sales of the period with the weighted average purchase rate.
