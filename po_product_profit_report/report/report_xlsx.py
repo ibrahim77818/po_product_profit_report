@@ -238,7 +238,7 @@ class PoProductProfitXlsx(models.AbstractModel):
             w.sheet.set_row(at_row, None, None, {'level': 1})
             for key in purchase_keys:
                 w.subtotal(at_row, key, vendor_start, at_row - 1, vendor_acc[key], 'vendor')
-            w.text(at_row, 'vendor', _('Subtotal · %s', vendor_acc['name']), 'vendor')
+            w.text(at_row, 'vendor', self.env._('Subtotal · %s', vendor_acc['name']), 'vendor')
             w.ratio(at_row, 'avg_cost', 'amount', 'qty',
                     vendor_acc['amount'] / vendor_acc['qty'] if vendor_acc['qty'] else 0,
                     'vendor')

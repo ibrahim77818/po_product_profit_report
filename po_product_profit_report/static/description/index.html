@@ -1,4 +1,4 @@
-<!-- Odoo Apps description page for po_product_profit_report (Odoo 16.0). Inline styles only: apps.odoo.com strips <style> and <script> blocks. -->
+<!-- Odoo Apps description page for po_product_profit_report (Odoo 18.0). Inline styles only: apps.odoo.com strips <style> and <script> blocks. -->
 <section style="max-width:1120px;margin:0 auto;padding:0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#2b2b33;">
 
   <!-- ============================== HERO ============================== -->
@@ -7,7 +7,7 @@
     <h1 style="font-size:40px;line-height:1.15;font-weight:700;margin:0 0 14px;color:#ffffff;">PO Product Profit Report</h1>
     <p style="font-size:19px;line-height:1.55;max-width:760px;margin:0 0 24px;color:#ffffff;opacity:.95;">See, for every product, what you bought at the <b>actual purchase order rates</b>, what is received and still pending, what you sold in the same period and the gross profit you made. Drill down to vendor and PO, then print it as a PDF or export it to Excel.</p>
     <div>
-      <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Odoo 16.0</span>
+      <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Odoo 18.0</span>
       <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Community &amp; Enterprise</span>
       <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">16 automated tests</span>
       <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Arabic (ar_001) &amp; RTL</span>
@@ -18,8 +18,8 @@
 
   <!-- ============================== KEY NUMBERS ============================== -->
   <div style="display:flex;flex-wrap:wrap;margin:28px -8px 8px;">
-    <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">1.2M lines</div><div style="font-size:15px;color:#555;">Benchmarked on 1.2&nbsp;million PO lines and 600,000 sale lines</div></div>
-    <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">0.2 s</div><div style="font-size:15px;color:#555;">A full month on that data set; one product drill-down in 0.01&nbsp;s</div></div>
+    <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">1.2M lines</div><div style="font-size:15px;color:#555;">Benchmarked on Odoo 18 with 1.2&nbsp;million PO lines and 600,000 sale lines</div></div>
+    <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">0.18 s</div><div style="font-size:15px;color:#555;">A full month on that data set; one product drill-down in 0.01&nbsp;s</div></div>
     <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">3 outputs</div><div style="font-size:15px;color:#555;">Interactive web view, PDF (with Arabic RTL) and formatted Excel</div></div>
     <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">0 overrides</div><div style="font-size:15px;color:#555;">Adds a new report; no standard Odoo report or view is replaced</div></div>
   </div>
@@ -29,7 +29,7 @@
   <p style="font-size:16px;color:#555;margin:0 0 18px;">Purchasing managers need one answer: for what we bought this period, at the prices we really paid, how much have we received, how much is still open, and are we making money when we sell it?</p>
   <div style="display:flex;flex-wrap:wrap;margin:0 -10px;">
     <div style="flex:1 1 440px;margin:10px;border:1px solid #f1d6d6;background:#fff8f8;border-radius:14px;padding:24px 26px;">
-      <h3 style="font-size:19px;font-weight:700;color:#b33939;margin:0 0 12px;">In standard Odoo 16</h3>
+      <h3 style="font-size:19px;font-weight:700;color:#b33939;margin:0 0 12px;">In standard Odoo 18</h3>
       <ul style="font-size:15px;line-height:1.65;margin:0;padding-left:20px;color:#3a3a42;">
         <li><b>Purchase Analysis</b> shows ordered and received quantities, but <b>no sales</b> next to them.</li>
         <li>Sales margin (with the <i>sale_margin</i> module) uses the <b>product cost</b>, not the prices on your purchase orders.</li>
@@ -138,7 +138,7 @@
     <thead><tr style="background:#714B67;color:#fff;"><th style="text-align:left;padding:10px 14px;width:220px;">Figure</th><th style="text-align:left;padding:10px 14px;">Definition</th></tr></thead>
     <tbody>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Purchased Qty</b></td><td style="padding:10px 14px;">PO line quantities in the product&rsquo;s unit of measure (2 Dozens = 24 Units).</td></tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>Purchased Amount</b></td><td style="padding:10px 14px;">Sum of PO line subtotals: the actual unit price &times; quantity, as stored on the purchase order line.</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>Purchased Amount</b></td><td style="padding:10px 14px;">Sum of PO line subtotals: the actual unit price &times; quantity, after any line <b>Discount</b>, as stored on the purchase order line.</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Avg. PO Rate</b></td><td style="padding:10px 14px;">Purchased Amount &divide; Purchased Qty.</td></tr>
       <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;"><b>No. of POs</b></td><td style="padding:10px 14px;">Distinct purchase orders. A PO with the same product on two lines counts once.</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;"><b>Received / Pending Qty</b></td><td style="padding:10px 14px;">Received quantity of the lines; Pending = Purchased &minus; Received, never below zero, per line.</td></tr>
@@ -167,16 +167,16 @@
 
   <!-- ============================== PERFORMANCE ============================== -->
   <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Measured performance</h2>
-  <p style="font-size:16px;color:#555;margin:0 0 18px;">On 100,000 purchase orders with 1.2&nbsp;million lines, 2,000 products and 600,000 sale lines (PostgreSQL 16, 2 vCPU). Median of 5 runs, product rows and grand totals included.</p>
+  <p style="font-size:16px;color:#555;margin:0 0 18px;">Odoo 18.0 on 100,000 purchase orders with 1.2&nbsp;million lines, 2,000 products and 600,000 sale lines (PostgreSQL 16, 2 vCPU). Median of 5 runs, product rows and grand totals included.</p>
   <table style="width:100%;border-collapse:collapse;font-size:15px;">
     <thead><tr style="background:#714B67;color:#fff;"><th style="text-align:left;padding:10px 14px;">Selection</th><th style="text-align:right;padding:10px 14px;">Time</th></tr></thead>
     <tbody>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">Drill-down: one product, 3 years of PO detail</td><td style="padding:10px 14px;text-align:right;">0.01&nbsp;s</td></tr>
       <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">One product, 3 years</td><td style="padding:10px 14px;text-align:right;">0.02&nbsp;s</td></tr>
-      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">One vendor, 3 years</td><td style="padding:10px 14px;text-align:right;">0.10&nbsp;s</td></tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">One month, all products</td><td style="padding:10px 14px;text-align:right;">0.21&nbsp;s</td></tr>
-      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">One quarter, all products</td><td style="padding:10px 14px;text-align:right;">0.34&nbsp;s</td></tr>
-      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">Search by reference, 3 years</td><td style="padding:10px 14px;text-align:right;">0.52&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">One vendor, 3 years</td><td style="padding:10px 14px;text-align:right;">0.09&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">One month, all products</td><td style="padding:10px 14px;text-align:right;">0.18&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">One quarter, all products</td><td style="padding:10px 14px;text-align:right;">0.28&nbsp;s</td></tr>
+      <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">Search by reference, 3 years</td><td style="padding:10px 14px;text-align:right;">0.62&nbsp;s</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">Everything, 3 years (1.2M lines)</td><td style="padding:10px 14px;text-align:right;">1.7&nbsp;s</td></tr>
     </tbody>
   </table>
@@ -199,7 +199,7 @@
   <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Technical details</h2>
   <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:12px;">
     <tbody>
-      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;width:240px;color:#777;">Odoo version</td><td style="padding:10px 14px;">16.0, Community and Enterprise</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;width:240px;color:#777;">Odoo version</td><td style="padding:10px 14px;">18.0, Community and Enterprise</td></tr>
       <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Depends on</td><td style="padding:10px 14px;"><code>purchase_stock</code>, <code>sale_stock</code></td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Python dependency</td><td style="padding:10px 14px;">None beyond Odoo (<code>xlsxwriter</code> ships with Odoo)</td></tr>
       <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Menus</td><td style="padding:10px 14px;">Purchase &rsaquo; Reporting &rsaquo; Product Profit (PO Rates)</td></tr>
@@ -207,7 +207,7 @@
       <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Models</td><td style="padding:10px 14px;"><code>po.product.profit.wizard</code> (wizard), <code>po.product.profit.engine</code> (SQL engine), <code>po.product.profit.xlsx</code> (Excel), <code>po.product.profit.format</code> (number formatting), <code>report.po_product_profit_report.report_po_product_profit</code> (PDF)</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Database</td><td style="padding:10px 14px;">4 covering indexes on <code>purchase_order</code>, <code>purchase_order_line</code>, <code>sale_order</code>, <code>sale_order_line</code>; dropped on uninstall</td></tr>
       <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Standard reports</td><td style="padding:10px 14px;">None replaced or modified</td></tr>
-      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Translations</td><td style="padding:10px 14px;">Arabic (<code>ar_001</code>), 124 terms, 100%</td></tr>
+      <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Translations</td><td style="padding:10px 14px;">Arabic (<code>ar_001</code>), 123 terms, 100%</td></tr>
       <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Automated tests</td><td style="padding:10px 14px;">16: multi-tier PO rates, all metrics, units of measure, RFQ / PO / Both, timezone boundaries, warehouse filter, foreign currency, grand totals and paging, drill-down and streaming, sorting, search and sold basis, security and input checks, wizard actions, PDF (detailed, totals, Arabic RTL), Excel, indexes, same product twice on one PO</td></tr>
       <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">License</td><td style="padding:10px 14px;">LGPL-3</td></tr>
     </tbody>

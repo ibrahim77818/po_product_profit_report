@@ -24,19 +24,23 @@
 
     .o_ppr_table {
         font-variant-numeric: tabular-nums;
+        // Odoo 17 uses a 14px base font and roomier table cells than 16;
+        // keep the 15-column report on one screen width.
+        font-size: 0.78rem;
+        > :not(caption) > * > * { padding: 0.3rem 0.35rem; }
         thead th {
             position: sticky;
             top: 0;
             z-index: 2;
             background: $o-gray-200;
             white-space: nowrap;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             vertical-align: bottom;
             &.o_ppr_sortable { cursor: pointer; }
         }
         td { white-space: nowrap; vertical-align: middle; }
-        .o_ppr_col_item { min-width: 280px; white-space: normal; }
-        .o_ppr_col_date { min-width: 110px; }
+        .o_ppr_col_item { min-width: 215px; white-space: normal; }
+        .o_ppr_col_date { min-width: 88px; }
         .o_ppr_product {
             font-weight: 500;
             &.o_ppr_clickable { cursor: pointer; }

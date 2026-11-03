@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 16:43+0000\n"
-"PO-Revision-Date: 2026-11-03 16:43+0000\n"
+"POT-Creation-Date: 2026-11-03 17:33+0000\n"
+"PO-Revision-Date: 2026-11-03 17:33+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/models/report_engine.py:0
-#, python-format
 msgid " (+%s more)"
 msgstr ""
 
@@ -55,9 +54,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/models/report_engine.py:0
-#: code:addons/po_product_profit_report/models/report_engine.py:0
-#: code:addons/po_product_profit_report/models/report_engine.py:0
-#, python-format
 msgid "All"
 msgstr ""
 
@@ -80,10 +76,8 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Avg. PO Rate"
 msgstr ""
 
@@ -91,10 +85,8 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Barcode"
 msgstr ""
 
@@ -111,14 +103,12 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Clear"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Collapse all"
 msgstr ""
 
@@ -129,15 +119,12 @@ msgstr ""
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard__company_ids
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Companies"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#, python-format
 msgid "Cost of Sold Qty"
 msgstr ""
 
@@ -156,7 +143,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Currency"
 msgstr ""
 
@@ -179,7 +165,6 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model:ir.model.fields.selection,name:po_product_profit_report.selection__po_product_profit_wizard__mode__detailed
-#, python-format
 msgid "Detailed"
 msgstr ""
 
@@ -198,7 +183,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#, python-format
 msgid "Document"
 msgstr ""
 
@@ -207,28 +191,24 @@ msgstr ""
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard__doc_type
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Document Type"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Documents"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Excel"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Expand all"
 msgstr ""
 
@@ -240,7 +220,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Filters"
 msgstr ""
 
@@ -255,7 +234,6 @@ msgstr ""
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Grand Total"
 msgstr ""
 
@@ -263,11 +241,9 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Gross Profit"
 msgstr ""
 
@@ -284,7 +260,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/models/report_engine.py:0
-#, python-format
 msgid "Invalid date range."
 msgstr ""
 
@@ -297,23 +272,15 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Item"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Item / Vendor / Purchase Order"
-msgstr ""
-
-#. module: po_product_profit_report
-#: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: po_product_profit_report
@@ -360,7 +327,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Load more products"
 msgstr ""
 
@@ -373,7 +339,6 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Margin"
 msgstr ""
 
@@ -381,10 +346,8 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Margin %"
 msgstr ""
 
@@ -398,23 +361,19 @@ msgstr ""
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Multiple vendors"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "No purchases match these filters"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/wizard/po_product_profit_wizard.py:0
-#, python-format
 msgid "No purchases match these filters."
 msgstr ""
 
@@ -422,24 +381,20 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "No. of POs"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/models/report_engine.py:0
-#, python-format
 msgid "Only Purchase Administrators can run the PO Product Profit Report."
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_pdf.py:0
-#, python-format
 msgid "Open this report from Purchase > Reporting > Product Profit."
 msgstr ""
 
@@ -451,14 +406,12 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "PDF"
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#, python-format
 msgid "PO"
 msgstr ""
 
@@ -468,12 +421,10 @@ msgstr ""
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: code:addons/po_product_profit_report/wizard/po_product_profit_wizard.py:0
-#: code:addons/po_product_profit_report/wizard/po_product_profit_wizard.py:0
 #: model:ir.actions.act_window,name:po_product_profit_report.action_po_product_profit_wizard
 #: model:ir.actions.report,name:po_product_profit_report.action_report_po_product_profit
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.po_product_profit_wizard_view_form
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit_header
-#, python-format
 msgid "PO Product Profit Report"
 msgstr ""
 
@@ -506,11 +457,9 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Pending Qty"
 msgstr ""
 
@@ -527,7 +476,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard__period
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.po_product_profit_wizard_view_form
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Period"
 msgstr ""
 
@@ -539,7 +487,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#, python-format
 msgid "Printed"
 msgstr ""
 
@@ -551,7 +498,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#, python-format
 msgid "Product Profit"
 msgstr ""
 
@@ -563,7 +509,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Product, reference or barcode…"
 msgstr ""
 
@@ -572,10 +517,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard__product_ids
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Products"
 msgstr ""
 
@@ -585,7 +528,6 @@ msgstr ""
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Purchase Date"
 msgstr ""
 
@@ -593,7 +535,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Purchase Order"
 msgstr ""
 
@@ -602,7 +543,6 @@ msgstr ""
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model:ir.model.fields.selection,name:po_product_profit_report.selection__po_product_profit_wizard__doc_type__po
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Purchase Orders"
 msgstr ""
 
@@ -610,11 +550,9 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Purchased Amount"
 msgstr ""
 
@@ -627,10 +565,8 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Purchased Qty"
 msgstr ""
 
@@ -668,7 +604,6 @@ msgstr ""
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "RFQ"
 msgstr ""
 
@@ -689,10 +624,8 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Received Qty"
 msgstr ""
 
@@ -706,7 +639,6 @@ msgstr ""
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard__mode
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Report Mode"
 msgstr ""
 
@@ -714,10 +646,8 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Sale Rate"
 msgstr ""
 
@@ -730,11 +660,9 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Sales Amount"
 msgstr ""
 
@@ -747,7 +675,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Search"
 msgstr ""
 
@@ -755,11 +682,9 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/js/profit_report_action.js:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Sold Qty"
 msgstr ""
 
@@ -773,7 +698,6 @@ msgstr ""
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard__sale_basis
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Sold Quantity Basis"
 msgstr ""
 
@@ -785,7 +709,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#, python-format
 msgid "Subtotal · %s"
 msgstr ""
 
@@ -793,7 +716,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/po_product_profit_report/models/report_engine.py:0
 #: code:addons/po_product_profit_report/wizard/po_product_profit_wizard.py:0
-#, python-format
 msgid "The start date must be on or before the end date."
 msgstr ""
 
@@ -815,7 +737,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#, python-format
 msgid ""
 "This selection exceeds the Excel row limit. Narrow the filters or use "
 "\"Totals Only\"."
@@ -824,7 +745,6 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-python
 #: code:addons/po_product_profit_report/wizard/po_product_profit_wizard.py:0
-#, python-format
 msgid ""
 "This selection produces %(rows)s rows, too many for a readable PDF (limit "
 "%(limit)s). Narrow the filters, switch to \"Totals Only\", or use the Excel "
@@ -840,7 +760,6 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model:ir.model.fields.selection,name:po_product_profit_report.selection__po_product_profit_wizard__mode__totals
-#, python-format
 msgid "Totals Only"
 msgstr ""
 
@@ -848,10 +767,8 @@ msgstr ""
 #. odoo-javascript
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
-#: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Vendor"
 msgstr ""
 
@@ -860,10 +777,8 @@ msgstr ""
 #. odoo-python
 #: code:addons/po_product_profit_report/report/report_xlsx.py:0
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard__partner_ids
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Vendors"
 msgstr ""
 
@@ -879,7 +794,6 @@ msgstr ""
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
 #: model:ir.model.fields,field_description:po_product_profit_report.field_po_product_profit_wizard__warehouse_ids
 #: model_terms:ir.ui.view,arch_db:po_product_profit_report.report_po_product_profit
-#, python-format
 msgid "Warehouses"
 msgstr ""
 
@@ -893,13 +807,11 @@ msgstr ""
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "Widen the period or change the document type, vendors or warehouses."
 msgstr ""
 
 #. module: po_product_profit_report
 #. odoo-javascript
 #: code:addons/po_product_profit_report/static/src/xml/profit_report_action.xml:0
-#, python-format
 msgid "products shown)"
 msgstr ""

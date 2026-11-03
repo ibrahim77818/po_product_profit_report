@@ -33,12 +33,12 @@ class TestPoProductProfit(TransactionCase):
         cls.customer = Partner.create({'name': 'PPR Customer'})
 
         Product = cls.env['product.product']
-        cls.p1 = Product.create({'name': 'PPR Widget', 'detailed_type': 'product',
+        cls.p1 = Product.create({'name': 'PPR Widget', 'type': 'consu', 'is_storable': True,
                                  'default_code': 'PPR-W', 'barcode': '6290000000011',
                                  'standard_price': 999.0, 'list_price': 5.0})
-        cls.p2 = Product.create({'name': 'PPR Gadget', 'detailed_type': 'product',
+        cls.p2 = Product.create({'name': 'PPR Gadget', 'type': 'consu', 'is_storable': True,
                                  'default_code': 'PPR-G', 'barcode': '6290000000028'})
-        cls.p3 = Product.create({'name': 'PPR Bolt', 'detailed_type': 'product',
+        cls.p3 = Product.create({'name': 'PPR Bolt', 'type': 'consu', 'is_storable': True,
                                  'default_code': 'PPR-B'})
         cls.products = cls.p1 | cls.p2 | cls.p3
 
@@ -108,7 +108,8 @@ class TestPoProductProfit(TransactionCase):
         picking = po.picking_ids.filtered(lambda p: p.state not in ('done', 'cancel'))
         picking.ensure_one()
         for move in picking.move_ids:
-            move.quantity_done = qty
+            move.quantity = qty
+            move.picked = True
         result = picking.button_validate()
         if isinstance(result, dict) and result.get('res_model') == 'stock.backorder.confirmation':
             Form(cls.env['stock.backorder.confirmation'].with_context(result['context'])) \

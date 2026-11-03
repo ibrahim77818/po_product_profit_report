@@ -105,7 +105,7 @@ class PoProductProfitEngine(models.AbstractModel):
     # Options
     # ------------------------------------------------------------------ #
     @api.model
-    def _check_access(self):
+    def _ppr_check_access(self):
         if not (self.env.su or self.env.user.has_group('purchase.group_purchase_manager')):
             raise AccessError(_('Only Purchase Administrators can run the PO Product Profit Report.'))
 
@@ -459,7 +459,7 @@ SELECT COUNT(*) AS po_count, COUNT(DISTINCT rp.commercial_partner_id) AS vendor_
     @api.model
     def fetch_summary(self, options, offset=0, limit=None):
         """Product rows (one page) + grand totals over the whole selection."""
-        self._check_access()
+        self._ppr_check_access()
         self.env.flush_all()
         self._tune_session()
         params = self._get_params(options)
@@ -484,7 +484,7 @@ SELECT COUNT(*) AS po_count, COUNT(DISTINCT rp.commercial_partner_id) AS vendor_
 
         Restricting ``product_ids`` at the line level keeps this an index
         lookup however large the period is."""
-        self._check_access()
+        self._ppr_check_access()
         self.env.flush_all()
         wanted = [int(p) for p in product_ids or []]
         if not wanted:
@@ -521,7 +521,7 @@ SELECT l.product_id, l.vendor_id, rp.name AS vendor_name,
         attached. Uses a server-side cursor so a million rows never sit in
         Python memory at once. ``product_rows`` (sorted, from
         ``fetch_summary``) can be passed to avoid recomputing them."""
-        self._check_access()
+        self._ppr_check_access()
         self.env.flush_all()
         self._tune_session()
         params = self._get_params(options)

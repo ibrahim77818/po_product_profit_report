@@ -6,7 +6,7 @@ import { useService } from "@web/core/utils/hooks";
 import { download } from "@web/core/network/download";
 import { formatFloat } from "@web/views/fields/formatters";
 import { deserializeDate, formatDate } from "@web/core/l10n/dates";
-import { _lt } from "@web/core/l10n/translation";
+import { _t } from "@web/core/l10n/translation";
 
 const WIZARD = "po.product.profit.wizard";
 const PAGE_SIZE = 200;
@@ -42,17 +42,17 @@ export class PoProductProfitReport extends Component {
             search: (params.options && params.options.search) || "",
         });
         this.columns = [
-            { key: "qty", label: _lt("Purchased Qty"), kind: "qty", sort: "qty" },
-            { key: "amount", label: _lt("Purchased Amount"), kind: "amount", sort: "amount" },
-            { key: "avg_cost", label: _lt("Avg. PO Rate"), kind: "amount" },
-            { key: "po_count", label: _lt("No. of POs"), kind: "int", sort: "po_count" },
-            { key: "received", label: _lt("Received Qty"), kind: "qty" },
-            { key: "pending", label: _lt("Pending Qty"), kind: "qty", sort: "pending" },
-            { key: "sold_qty", label: _lt("Sold Qty"), kind: "qty", sort: "sold" },
-            { key: "sale_rate", label: _lt("Sale Rate"), kind: "amount" },
-            { key: "sales_amount", label: _lt("Sales Amount"), kind: "amount", sort: "sales" },
-            { key: "gross_profit", label: _lt("Gross Profit"), kind: "amount", sort: "profit" },
-            { key: "margin", label: _lt("Margin %"), kind: "pct", sort: "margin" },
+            { key: "qty", label: _t("Purchased Qty"), kind: "qty", sort: "qty" },
+            { key: "amount", label: _t("Purchased Amount"), kind: "amount", sort: "amount" },
+            { key: "avg_cost", label: _t("Avg. PO Rate"), kind: "amount" },
+            { key: "po_count", label: _t("No. of POs"), kind: "int", sort: "po_count" },
+            { key: "received", label: _t("Received Qty"), kind: "qty" },
+            { key: "pending", label: _t("Pending Qty"), kind: "qty", sort: "pending" },
+            { key: "sold_qty", label: _t("Sold Qty"), kind: "qty", sort: "sold" },
+            { key: "sale_rate", label: _t("Sale Rate"), kind: "amount" },
+            { key: "sales_amount", label: _t("Sales Amount"), kind: "amount", sort: "sales" },
+            { key: "gross_profit", label: _t("Gross Profit"), kind: "amount", sort: "profit" },
+            { key: "margin", label: _t("Margin %"), kind: "pct", sort: "margin" },
         ];
         onWillStart(() => this.load());
     }
